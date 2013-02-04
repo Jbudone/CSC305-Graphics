@@ -3,7 +3,13 @@ Makefile
 *.swp
 *.git
 *.o
+*.fuse*
 BasicOpenGL
+
+taghl_config.txt
+tags
+tags_debug
+types_c.taghl
 
 a1.zip
 a2.zip
