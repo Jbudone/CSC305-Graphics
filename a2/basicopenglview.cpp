@@ -131,3 +131,66 @@ void BasicOpenGLView::keyReleaseEvent(QKeyEvent *event)
      *  movement and create the mViewMatrix for it
      */
 }
+
+
+
+/*****************************************************************************************/
+/** Geometry Manipulation **/
+
+
+void BasicOpenGLView::translateGeometries_x(int x)
+{
+	printf("Translating: %i\n", x);
+
+
+	// iterate through each geometry to translate
+    std::map<std::string, Geometry *>::iterator it = mGeometries.begin();
+    while (it != mGeometries.end())
+    {
+		it->second->translate(Vector3(x, 0, 0));
+        ++it;
+    }
+}
+
+void BasicOpenGLView::translateGeometries_y(int y)
+{
+	printf("Translating: %i\n", y);
+}
+
+void BasicOpenGLView::translateGeometries_z(int z)
+{
+	printf("Translating: %i\n", z);
+}
+
+void BasicOpenGLView::scaleGeometries_x(int x)
+{
+	printf("Scaling: %i\n", x);
+}
+
+void BasicOpenGLView::scaleGeometries_y(int y)
+{
+	printf("Scaling: %i\n", y);
+}
+
+
+void BasicOpenGLView::scaleGeometries_z(int z)
+{
+	printf("Scaling: %i\n", z);
+}
+
+
+void BasicOpenGLView::rotateGeometries_x(int x)
+{
+	printf("Rotating: %i\n", x);
+}
+
+void BasicOpenGLView::rotateGeometries_y(int y)
+{
+	printf("Rotating: %i\n", y);
+}
+
+void BasicOpenGLView::rotateGeometries_z(int z)
+{
+	printf("Rotating: %i\n", z);
+}
+

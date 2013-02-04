@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'mainwindow.ui'
 **
-** Created: Sun Feb 3 11:30:45 2013
+** Created: Sun Feb 3 20:37:08 2013
 **      by: Qt User Interface Compiler version 4.8.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -48,18 +48,18 @@ public:
     QPushButton *addButton;
     QPushButton *removeButton;
     QGroupBox *groupTranslation;
-    QWidget *widget;
+    QWidget *layoutWidget;
     QVBoxLayout *verticalLayout_3;
     QSlider *slide_transx;
     QSlider *slide_transy;
     QSlider *slide_transz;
-    QWidget *widget1;
+    QWidget *layoutWidget1;
     QVBoxLayout *verticalLayout_4;
     QLabel *label;
     QLabel *label_2;
     QLabel *label_3;
     QGroupBox *groupRotation;
-    QWidget *layoutWidget;
+    QWidget *layoutWidget2;
     QVBoxLayout *verticalLayout_5;
     QLabel *label_4;
     QLabel *label_5;
@@ -168,15 +168,15 @@ public:
         groupTranslation = new QGroupBox(groupBox);
         groupTranslation->setObjectName(QString::fromUtf8("groupTranslation"));
         groupTranslation->setAutoFillBackground(true);
-        widget = new QWidget(groupTranslation);
-        widget->setObjectName(QString::fromUtf8("widget"));
-        widget->setGeometry(QRect(30, 20, 191, 61));
-        verticalLayout_3 = new QVBoxLayout(widget);
+        layoutWidget = new QWidget(groupTranslation);
+        layoutWidget->setObjectName(QString::fromUtf8("layoutWidget"));
+        layoutWidget->setGeometry(QRect(30, 20, 191, 61));
+        verticalLayout_3 = new QVBoxLayout(layoutWidget);
         verticalLayout_3->setSpacing(6);
         verticalLayout_3->setContentsMargins(11, 11, 11, 11);
         verticalLayout_3->setObjectName(QString::fromUtf8("verticalLayout_3"));
         verticalLayout_3->setContentsMargins(0, 0, 0, 0);
-        slide_transx = new QSlider(widget);
+        slide_transx = new QSlider(layoutWidget);
         slide_transx->setObjectName(QString::fromUtf8("slide_transx"));
         sizePolicy2.setHeightForWidth(slide_transx->sizePolicy().hasHeightForWidth());
         slide_transx->setSizePolicy(sizePolicy2);
@@ -187,7 +187,7 @@ public:
 
         verticalLayout_3->addWidget(slide_transx);
 
-        slide_transy = new QSlider(widget);
+        slide_transy = new QSlider(layoutWidget);
         slide_transy->setObjectName(QString::fromUtf8("slide_transy"));
         sizePolicy2.setHeightForWidth(slide_transy->sizePolicy().hasHeightForWidth());
         slide_transy->setSizePolicy(sizePolicy2);
@@ -197,7 +197,7 @@ public:
 
         verticalLayout_3->addWidget(slide_transy);
 
-        slide_transz = new QSlider(widget);
+        slide_transz = new QSlider(layoutWidget);
         slide_transz->setObjectName(QString::fromUtf8("slide_transz"));
         sizePolicy2.setHeightForWidth(slide_transz->sizePolicy().hasHeightForWidth());
         slide_transz->setSizePolicy(sizePolicy2);
@@ -207,62 +207,63 @@ public:
 
         verticalLayout_3->addWidget(slide_transz);
 
-        widget1 = new QWidget(groupTranslation);
-        widget1->setObjectName(QString::fromUtf8("widget1"));
-        widget1->setGeometry(QRect(10, 20, 12, 65));
-        verticalLayout_4 = new QVBoxLayout(widget1);
+        layoutWidget1 = new QWidget(groupTranslation);
+        layoutWidget1->setObjectName(QString::fromUtf8("layoutWidget1"));
+        layoutWidget1->setGeometry(QRect(10, 20, 12, 65));
+        verticalLayout_4 = new QVBoxLayout(layoutWidget1);
         verticalLayout_4->setSpacing(6);
         verticalLayout_4->setContentsMargins(11, 11, 11, 11);
         verticalLayout_4->setObjectName(QString::fromUtf8("verticalLayout_4"));
         verticalLayout_4->setContentsMargins(0, 0, 0, 0);
-        label = new QLabel(widget1);
+        label = new QLabel(layoutWidget1);
         label->setObjectName(QString::fromUtf8("label"));
-        label->setStyleSheet(QString::fromUtf8("text-weight:bold;"));
+        label->setStyleSheet(QString::fromUtf8(""));
 
         verticalLayout_4->addWidget(label);
 
-        label_2 = new QLabel(widget1);
+        label_2 = new QLabel(layoutWidget1);
         label_2->setObjectName(QString::fromUtf8("label_2"));
-        label_2->setStyleSheet(QString::fromUtf8("text-weight:bold;"));
+        label_2->setStyleSheet(QString::fromUtf8(""));
 
         verticalLayout_4->addWidget(label_2);
 
-        label_3 = new QLabel(widget1);
+        label_3 = new QLabel(layoutWidget1);
         label_3->setObjectName(QString::fromUtf8("label_3"));
-        label_3->setStyleSheet(QString::fromUtf8("text-weight:bold;"));
+        label_3->setStyleSheet(QString::fromUtf8(""));
 
         verticalLayout_4->addWidget(label_3);
 
-        label->raise();
+        layoutWidget->raise();
+        layoutWidget->raise();
 
         verticalLayout_2->addWidget(groupTranslation);
 
         groupRotation = new QGroupBox(groupBox);
         groupRotation->setObjectName(QString::fromUtf8("groupRotation"));
         groupRotation->setAutoFillBackground(true);
-        layoutWidget = new QWidget(groupRotation);
-        layoutWidget->setObjectName(QString::fromUtf8("layoutWidget"));
-        layoutWidget->setGeometry(QRect(10, 20, 12, 65));
-        verticalLayout_5 = new QVBoxLayout(layoutWidget);
+        layoutWidget2 = new QWidget(groupRotation);
+        layoutWidget2->setObjectName(QString::fromUtf8("layoutWidget2"));
+        layoutWidget2->setGeometry(QRect(10, 20, 12, 65));
+        verticalLayout_5 = new QVBoxLayout(layoutWidget2);
         verticalLayout_5->setSpacing(6);
         verticalLayout_5->setContentsMargins(11, 11, 11, 11);
         verticalLayout_5->setObjectName(QString::fromUtf8("verticalLayout_5"));
         verticalLayout_5->setContentsMargins(0, 0, 0, 0);
-        label_4 = new QLabel(layoutWidget);
+        label_4 = new QLabel(layoutWidget2);
         label_4->setObjectName(QString::fromUtf8("label_4"));
-        label_4->setStyleSheet(QString::fromUtf8("text-weight:bold;"));
+        label_4->setStyleSheet(QString::fromUtf8(""));
 
         verticalLayout_5->addWidget(label_4);
 
-        label_5 = new QLabel(layoutWidget);
+        label_5 = new QLabel(layoutWidget2);
         label_5->setObjectName(QString::fromUtf8("label_5"));
-        label_5->setStyleSheet(QString::fromUtf8("text-weight:bold;"));
+        label_5->setStyleSheet(QString::fromUtf8(""));
 
         verticalLayout_5->addWidget(label_5);
 
-        label_6 = new QLabel(layoutWidget);
+        label_6 = new QLabel(layoutWidget2);
         label_6->setObjectName(QString::fromUtf8("label_6"));
-        label_6->setStyleSheet(QString::fromUtf8("text-weight:bold;"));
+        label_6->setStyleSheet(QString::fromUtf8(""));
 
         verticalLayout_5->addWidget(label_6);
 
@@ -305,8 +306,6 @@ public:
 
         verticalLayout_6->addWidget(slide_rotz);
 
-        layoutWidget->raise();
-        layoutWidget_2->raise();
 
         verticalLayout_2->addWidget(groupRotation);
 
@@ -324,19 +323,19 @@ public:
         verticalLayout_7->setContentsMargins(0, 0, 0, 0);
         label_7 = new QLabel(layoutWidget_3);
         label_7->setObjectName(QString::fromUtf8("label_7"));
-        label_7->setStyleSheet(QString::fromUtf8("text-weight:bold;"));
+        label_7->setStyleSheet(QString::fromUtf8(""));
 
         verticalLayout_7->addWidget(label_7);
 
         label_8 = new QLabel(layoutWidget_3);
         label_8->setObjectName(QString::fromUtf8("label_8"));
-        label_8->setStyleSheet(QString::fromUtf8("text-weight:bold;"));
+        label_8->setStyleSheet(QString::fromUtf8(""));
 
         verticalLayout_7->addWidget(label_8);
 
         label_9 = new QLabel(layoutWidget_3);
         label_9->setObjectName(QString::fromUtf8("label_9"));
-        label_9->setStyleSheet(QString::fromUtf8("text-weight:bold;"));
+        label_9->setStyleSheet(QString::fromUtf8(""));
 
         verticalLayout_7->addWidget(label_9);
 

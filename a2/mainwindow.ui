@@ -35,11 +35,6 @@
         <height>300</height>
        </size>
       </property>
-      <zorder>groupBox</zorder>
-      <zorder>groupBox</zorder>
-      <zorder>groupBox</zorder>
-      <zorder>groupBox</zorder>
-      <zorder>groupBox</zorder>
      </widget>
     </item>
     <item alignment="Qt::AlignRight">
@@ -149,7 +144,7 @@
          <property name="title">
           <string>Translation</string>
          </property>
-         <widget class="QWidget" name="">
+         <widget class="QWidget" name="layoutWidget">
           <property name="geometry">
            <rect>
             <x>30</x>
@@ -239,7 +234,7 @@
            </item>
           </layout>
          </widget>
-         <widget class="QWidget" name="">
+         <widget class="QWidget" name="layoutWidget">
           <property name="geometry">
            <rect>
             <x>10</x>
@@ -252,7 +247,7 @@
            <item>
             <widget class="QLabel" name="label">
              <property name="styleSheet">
-              <string notr="true">text-weight:bold;</string>
+              <string notr="true"/>
              </property>
              <property name="text">
               <string>x</string>
@@ -262,7 +257,7 @@
            <item>
             <widget class="QLabel" name="label_2">
              <property name="styleSheet">
-              <string notr="true">text-weight:bold;</string>
+              <string notr="true"/>
              </property>
              <property name="text">
               <string>y</string>
@@ -272,7 +267,7 @@
            <item>
             <widget class="QLabel" name="label_3">
              <property name="styleSheet">
-              <string notr="true">text-weight:bold;</string>
+              <string notr="true"/>
              </property>
              <property name="text">
               <string>z</string>
@@ -281,12 +276,8 @@
            </item>
           </layout>
          </widget>
-         <zorder>scroll_transx</zorder>
-         <zorder>groupRotation</zorder>
-         <zorder>label</zorder>
          <zorder>layoutWidget</zorder>
-         <zorder>layoutWidget_2</zorder>
-         <zorder>groupRotation</zorder>
+         <zorder>layoutWidget</zorder>
         </widget>
        </item>
        <item>
@@ -310,7 +301,7 @@
            <item>
             <widget class="QLabel" name="label_4">
              <property name="styleSheet">
-              <string notr="true">text-weight:bold;</string>
+              <string notr="true"/>
              </property>
              <property name="text">
               <string>x</string>
@@ -320,7 +311,7 @@
            <item>
             <widget class="QLabel" name="label_5">
              <property name="styleSheet">
-              <string notr="true">text-weight:bold;</string>
+              <string notr="true"/>
              </property>
              <property name="text">
               <string>y</string>
@@ -330,7 +321,7 @@
            <item>
             <widget class="QLabel" name="label_6">
              <property name="styleSheet">
-              <string notr="true">text-weight:bold;</string>
+              <string notr="true"/>
              </property>
              <property name="text">
               <string>z</string>
@@ -429,9 +420,6 @@
            </item>
           </layout>
          </widget>
-         <zorder>groupScale</zorder>
-         <zorder>layoutWidget</zorder>
-         <zorder>layoutWidget_2</zorder>
         </widget>
        </item>
        <item>
@@ -458,7 +446,7 @@
            <item>
             <widget class="QLabel" name="label_7">
              <property name="styleSheet">
-              <string notr="true">text-weight:bold;</string>
+              <string notr="true"/>
              </property>
              <property name="text">
               <string>x</string>
@@ -468,7 +456,7 @@
            <item>
             <widget class="QLabel" name="label_8">
              <property name="styleSheet">
-              <string notr="true">text-weight:bold;</string>
+              <string notr="true"/>
              </property>
              <property name="text">
               <string>y</string>
@@ -478,7 +466,7 @@
            <item>
             <widget class="QLabel" name="label_9">
              <property name="styleSheet">
-              <string notr="true">text-weight:bold;</string>
+              <string notr="true"/>
              </property>
              <property name="text">
               <string>z</string>

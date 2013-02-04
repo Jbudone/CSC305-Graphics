@@ -123,6 +123,36 @@ protected:
      */
     void keyReleaseEvent ( QKeyEvent * event );
 
+
+
+public slots:
+	/**************************************************************************************/
+	/** Geometry Manipulation **/
+
+	/**
+	 * Translations
+	 * Translate the geometry for each component
+	 */
+	void translateGeometries_x(int);
+	void translateGeometries_y(int);
+	void translateGeometries_z(int);
+
+	/**
+	 * Scaling
+	 * Scale the geometries for each component
+	 */
+	void scaleGeometries_x(int);
+	void scaleGeometries_y(int);
+	void scaleGeometries_z(int);
+
+	/**
+	 * Rotation
+	 * Rotate the geometries for each component
+	 */
+	void rotateGeometries_x(int);
+	void rotateGeometries_y(int);
+	void rotateGeometries_z(int);
+
 private:
 
     Matrix4x4       mProjectionMatrix;              /**< the projection matrix to be used for rendering. */

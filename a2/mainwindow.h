@@ -49,24 +49,7 @@ public slots:
      * slot to be called for removing geometry
      */
     void removeGeometry();
-
-	/**
-	 * (JB)
-	 * GEOMETRY Manipulation
-	 * translate, scale, rotate geometries for each component
-	 */
-	void translateGeometries_x(int);
-	void translateGeometries_y(int);
-	void translateGeometries_z(int);
-
-	void scaleGeometries_x(int);
-	void scaleGeometries_y(int);
-	void scaleGeometries_z(int);
-
-	void rotateGeometries_x(int);
-	void rotateGeometries_y(int);
-	void rotateGeometries_z(int);
-
+	
 private slots:
     void on_actionAdd_Model_triggered();
 
