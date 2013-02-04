@@ -1,0 +1,9 @@
+Makefile
+.DS_Store
+*.swp
+*.git
+*.o
+BasicOpenGL
+
+a1.zip
+a2.zip

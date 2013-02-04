@@ -1,0 +1,359 @@
+
+Reading Types by Syntax
+Read Types by Syntax not specified
+Reading Types by FileType
+Read Types by FileType not specified
+Reading Types by Extension
+Reading types with ExtensionLookup at 20130201-205228
+Locating file CONFIG with suffix 
+Priority: ['Explicit', 'UpFromFile', 'CurrentDirectory']
+Searching up from /home/jbud/jdrive/jstuff/school/uvic/305/a2/AssignmentTwo for ['tags', 'taghl_config.txt']
+Trying /home/jbud/jdrive/jstuff/school/uvic/305/a2/AssignmentTwo
+Found match: /home/jbud/jdrive/jstuff/school/uvic/305/a2/AssignmentTwo (/home/jbud/jdrive/jstuff/school/uvic/305/a2/AssignmentTwo/tags)
+Found location with UpFromFile
+Found file location: /home/jbud/jdrive/jstuff/school/uvic/305/a2/AssignmentTwo/taghl_config.txt
+File does not exist
+No project config file
+Reading types of suffix c for file geometry.cpp
+Skip List is [] (length 0)
+Searching for types file
+Locating file TYPES with suffix c
+Priority: ['Explicit', 'UpFromFile', 'CurrentDirectory']
+Searching up from /home/jbud/jdrive/jstuff/school/uvic/305/a2/AssignmentTwo for ['tags', 'taghl_config.txt']
+Trying /home/jbud/jdrive/jstuff/school/uvic/305/a2/AssignmentTwo
+Found match: /home/jbud/jdrive/jstuff/school/uvic/305/a2/AssignmentTwo (/home/jbud/jdrive/jstuff/school/uvic/305/a2/AssignmentTwo/tags)
+Found location with UpFromFile
+Found file location: /home/jbud/jdrive/jstuff/school/uvic/305/a2/AssignmentTwo/types_c.taghl
+File does not exist
+Searching for user libraries
+Library Dir: .
+Library List: []
+Finding library files for current file with suffix c
+Loading standard library information
+Loading information for /home/jbud/.vim/bundle/taghighlight/plugin/TagHighlight/standard_libraries/android/library_types.txt
+Loaded library: {'MatchLines': '30', 'TypesSuffixes': ['java'], 'LibraryName': 'Android SDK', 'CustomFunction': 'TagHighlight#Libraries#NeverMatch', 'TypesFileFullPaths': ['/home/jbud/.vim/bundle/taghighlight/plugin/TagHighlight/standard_libraries/android/android_sdk.taghl'], 'CheckMode': 'MatchStart', 'TypesFiles': ['android_sdk.taghl'], 'MatchREs': ['^\s*import\s\+android\.']}
+Loading information for /home/jbud/.vim/bundle/taghighlight/plugin/TagHighlight/standard_libraries/jdk/library_types.txt
+Loaded library: {'TypesFileFullPaths': ['/home/jbud/.vim/bundle/taghighlight/plugin/TagHighlight/standard_libraries/jdk/jdk.taghl'], 'TypesSuffixes': ['java'], 'LibraryName': 'JDK', 'CustomFunction': 'TagHighlight#Libraries#NeverMatch', 'CheckMode': 'Always', 'TypesFiles': ['jdk.taghl'], 'MatchLines': 30, 'MatchREs': ['.\%^']}
+Loading information for /home/jbud/.vim/bundle/taghighlight/plugin/TagHighlight/standard_libraries/pyside/library_types.txt
+Loaded library: {'TypesFileFullPaths': ['/home/jbud/.vim/bundle/taghighlight/plugin/TagHighlight/standard_libraries/pyside/pyside.taghl'], 'TypesSuffixes': ['py'], 'LibraryName': 'PySide', 'CustomFunction': 'TagHighlight#Libraries#NeverMatch', 'CheckMode': 'MatchStart', 'TypesFiles': ['pyside.taghl'], 'MatchLines': 30, 'MatchREs': ['^\s*import\s+PySide', '^\s*from\s+PySide']}
+Loading information for /home/jbud/.vim/bundle/taghighlight/plugin/TagHighlight/standard_libraries/qt4/library_types.txt
+Loaded library: {'MatchLines': '30', 'TypesSuffixes': ['c'], 'LibraryName': 'Qt4', 'CustomFunction': 'TagHighlight#Libraries#NeverMatch', 'TypesFileFullPaths': ['/home/jbud/.vim/bundle/taghighlight/plugin/TagHighlight/standard_libraries/qt4/qt4.taghl'], 'CheckMode': 'MatchStart', 'TypesFiles': ['qt4.taghl'], 'MatchREs': ['^\s*#include\s\+<[qQ]']}
+Loading information for /home/jbud/.vim/bundle/taghighlight/plugin/TagHighlight/standard_libraries/wxpython/library_types.txt
+Loaded library: {'MatchLines': '30', 'TypesSuffixes': ['py'], 'LibraryName': 'wxpython', 'CustomFunction': 'TagHighlight#Libraries#NeverMatch', 'TypesFileFullPaths': ['/home/jbud/.vim/bundle/taghighlight/plugin/TagHighlight/standard_libraries/wxpython/wxpython.taghl'], 'CheckMode': 'MatchStart', 'TypesFiles': ['wxpython.taghl'], 'MatchREs': ['^\s*import\s\+wx\>', '^\s*from\s\+wx\>']}
+Loading information for /home/jbud/.vim/bundle/taghighlight/plugin/TagHighlight/standard_libraries/wxwidgets/library_types.txt
+Loaded library: {'MatchLines': '30', 'TypesSuffixes': ['c'], 'LibraryName': 'wxWidgets', 'CustomFunction': 'TagHighlight#Libraries#NeverMatch', 'TypesFileFullPaths': ['/home/jbud/.vim/bundle/taghighlight/plugin/TagHighlight/standard_libraries/wxwidgets/wxwidgets.taghl'], 'CheckMode': 'MatchStart', 'TypesFiles': ['wxwidgets.taghl'], 'MatchREs': ['^\s*#include\s\+<wx/']}
+Checking Qt4
+Library(Qt4): Checking MatchStart
+No match:Qt4
+Checking wxpython
+No match:wxpython
+Checking JDK
+No match:JDK
+Checking PySide
+No match:PySide
+Checking wxWidgets
+Library(wxWidgets): Checking MatchStart
+No match:wxWidgets
+Checking Android SDK
+No match:Android SDK
+Calling special handler TagHighlight#SpecialHandlers#CRainbowHandler
+Language handler for rainbow.vim compatibility
+ReadTypes complete
+UpdateAndRead() called with parameter 0
+Running UpdateTypesFile function at 20130201-205231
+Current directory is /home/jbud/jdrive/jstuff/school/uvic/305/a2/AssignmentTwo
+Current file is /home/jbud/jdrive/jstuff/school/uvic/305/a2/AssignmentTwo/geometry.cpp
+Release Info:{'VersionInfo': {}, 'LastRelease': '2.1.5'}
+Global options (g:TagHighlightSettings): {}
+Buffer options (b:TagHighlightSettings): {}
+Locating file CONFIG with suffix 
+Priority: ['Explicit', 'UpFromFile', 'CurrentDirectory']
+Searching up from /home/jbud/jdrive/jstuff/school/uvic/305/a2/AssignmentTwo for ['tags', 'taghl_config.txt']
+Trying /home/jbud/jdrive/jstuff/school/uvic/305/a2/AssignmentTwo
+Found match: /home/jbud/jdrive/jstuff/school/uvic/305/a2/AssignmentTwo (/home/jbud/jdrive/jstuff/school/uvic/305/a2/AssignmentTwo/tags)
+Found location with UpFromFile
+Found file location: /home/jbud/jdrive/jstuff/school/uvic/305/a2/AssignmentTwo/taghl_config.txt
+File does not exist
+No project config file
+Project config file does not exist
+CtagsExecutable not set, searching for 'ctags' in path
+Locating file TAGS with suffix 
+Priority: ['Explicit', 'UpFromFile', 'CurrentDirectory']
+Searching up from /home/jbud/jdrive/jstuff/school/uvic/305/a2/AssignmentTwo for ['tags', 'taghl_config.txt']
+Trying /home/jbud/jdrive/jstuff/school/uvic/305/a2/AssignmentTwo
+Found match: /home/jbud/jdrive/jstuff/school/uvic/305/a2/AssignmentTwo (/home/jbud/jdrive/jstuff/school/uvic/305/a2/AssignmentTwo/tags)
+Found location with UpFromFile
+Found file location: /home/jbud/jdrive/jstuff/school/uvic/305/a2/AssignmentTwo/tags
+File exists
+Locating file TYPES with suffix *
+Priority: ['Explicit', 'UpFromFile', 'CurrentDirectory']
+Searching up from /home/jbud/jdrive/jstuff/school/uvic/305/a2/AssignmentTwo for ['tags', 'taghl_config.txt']
+Trying /home/jbud/jdrive/jstuff/school/uvic/305/a2/AssignmentTwo
+Found match: /home/jbud/jdrive/jstuff/school/uvic/305/a2/AssignmentTwo (/home/jbud/jdrive/jstuff/school/uvic/305/a2/AssignmentTwo/tags)
+Found location with UpFromFile
+Found file location: /home/jbud/jdrive/jstuff/school/uvic/305/a2/AssignmentTwo/types_*.taghl
+File does not exist
+No source dir set
+Current directory is now /home/jbud/jdrive/jstuff/school/uvic/305/a2/AssignmentTwo
+Using tags file directory
+Running generator with options:
+ - g:TagHighlightSettings: {}
+ - b:TagHighlightConfigFileOptions: UNSET
+ - b:TagHighlightSettings: {'SourceDir': '/home/jbud/jdrive/jstuff/school/uvic/305/a2/AssignmentTwo', 'TypesFileLocation': '/home/jbud/jdrive/jstuff/school/uvic/305/a2/AssignmentTwo', 'CtagsFileLocation': '/home/jbud/jdrive/jstuff/school/uvic/305/a2/AssignmentTwo', 'CtagsExeFull': '/usr/bin/ctags'}
+Python variant is if_pyth
+Python Command is py
+Python Path is 
+Python version reported as: 2.7.3 (default, Aug  1 2012, 05:27:35) 
+[GCC 4.6.3]
+Using variant: if_pyth
+UpdateTypesFile() complete, current directory is now /home/jbud/jdrive/jstuff/school/uvic/305/a2/AssignmentTwo
+Locating file CONFIG with suffix 
+Priority: ['Explicit', 'UpFromFile', 'CurrentDirectory']
+Searching up from /home/jbud/jdrive/jstuff/school/uvic/305/a2/AssignmentTwo for ['tags', 'taghl_config.txt']
+Trying /home/jbud/jdrive/jstuff/school/uvic/305/a2/AssignmentTwo
+Found match: /home/jbud/jdrive/jstuff/school/uvic/305/a2/AssignmentTwo (/home/jbud/jdrive/jstuff/school/uvic/305/a2/AssignmentTwo/tags)
+Found location with UpFromFile
+Found file location: /home/jbud/jdrive/jstuff/school/uvic/305/a2/AssignmentTwo/taghl_config.txt
+File does not exist
+No project config file
+Reading Types by Extension
+Reading types with ExtensionLookup at 20130201-205232
+Locating file CONFIG with suffix 
+Priority: ['Explicit', 'UpFromFile', 'CurrentDirectory']
+Searching up from /home/jbud/jdrive/jstuff/school/uvic/305/a2/AssignmentTwo for ['tags', 'taghl_config.txt']
+Trying /home/jbud/jdrive/jstuff/school/uvic/305/a2/AssignmentTwo
+Found match: /home/jbud/jdrive/jstuff/school/uvic/305/a2/AssignmentTwo (/home/jbud/jdrive/jstuff/school/uvic/305/a2/AssignmentTwo/tags)
+Found location with UpFromFile
+Found file location: /home/jbud/jdrive/jstuff/school/uvic/305/a2/AssignmentTwo/taghl_config.txt
+File does not exist
+No project config file
+Reading types of suffix c for file geometry.cpp
+Skip List is [] (length 0)
+Searching for types file
+Locating file TYPES with suffix c
+Priority: ['Explicit', 'UpFromFile', 'CurrentDirectory']
+Searching up from /home/jbud/jdrive/jstuff/school/uvic/305/a2/AssignmentTwo for ['tags', 'taghl_config.txt']
+Trying /home/jbud/jdrive/jstuff/school/uvic/305/a2/AssignmentTwo
+Found match: /home/jbud/jdrive/jstuff/school/uvic/305/a2/AssignmentTwo (/home/jbud/jdrive/jstuff/school/uvic/305/a2/AssignmentTwo/tags)
+Found location with UpFromFile
+Found file location: /home/jbud/jdrive/jstuff/school/uvic/305/a2/AssignmentTwo/types_c.taghl
+File does not exist
+Searching for user libraries
+Library Dir: .
+Library List: []
+Finding library files for current file with suffix c
+Checking Qt4
+Library(Qt4): Checking MatchStart
+No match:Qt4
+Checking wxpython
+No match:wxpython
+Checking JDK
+No match:JDK
+Checking PySide
+No match:PySide
+Checking wxWidgets
+Library(wxWidgets): Checking MatchStart
+No match:wxWidgets
+Checking Android SDK
+No match:Android SDK
+Calling special handler TagHighlight#SpecialHandlers#CRainbowHandler
+Language handler for rainbow.vim compatibility
+ReadTypes complete
+Success with method Extension
+UpdateAndRead() complete
+Reading Types by Syntax
+Read Types by Syntax not specified
+Reading Types by FileType
+Read Types by FileType not specified
+Reading Types by Extension
+Reading types with ExtensionLookup at 20130201-205241
+UpdateAndRead() called with parameter 0
+Running UpdateTypesFile function at 20130201-205833
+Current directory is /home/jbud/jdrive/jstuff/school/uvic/305/a2/AssignmentTwo
+Current file is 
+Release Info:{'VersionInfo': {}, 'LastRelease': '2.1.5'}
+Global options (g:TagHighlightSettings): {}
+Buffer options (b:TagHighlightSettings): {}
+Locating file CONFIG with suffix 
+Priority: ['Explicit', 'UpFromFile', 'CurrentDirectory']
+Searching up from /home/jbud/jdrive/jstuff/school/uvic/305/a2/AssignmentTwo for ['tags', 'taghl_config.txt']
+Trying /home/jbud/jdrive/jstuff/school/uvic/305/a2/AssignmentTwo
+Found match: /home/jbud/jdrive/jstuff/school/uvic/305/a2/AssignmentTwo (/home/jbud/jdrive/jstuff/school/uvic/305/a2/AssignmentTwo/tags)
+Found location with UpFromFile
+Found file location: /home/jbud/jdrive/jstuff/school/uvic/305/a2/AssignmentTwo/taghl_config.txt
+File does not exist
+No project config file
+Project config file does not exist
+CtagsExecutable not set, searching for 'ctags' in path
+Locating file TAGS with suffix 
+Priority: ['Explicit', 'UpFromFile', 'CurrentDirectory']
+Searching up from /home/jbud/jdrive/jstuff/school/uvic/305/a2/AssignmentTwo for ['tags', 'taghl_config.txt']
+Trying /home/jbud/jdrive/jstuff/school/uvic/305/a2/AssignmentTwo
+Found match: /home/jbud/jdrive/jstuff/school/uvic/305/a2/AssignmentTwo (/home/jbud/jdrive/jstuff/school/uvic/305/a2/AssignmentTwo/tags)
+Found location with UpFromFile
+Found file location: /home/jbud/jdrive/jstuff/school/uvic/305/a2/AssignmentTwo/tags
+File exists
+Locating file TYPES with suffix *
+Priority: ['Explicit', 'UpFromFile', 'CurrentDirectory']
+Searching up from /home/jbud/jdrive/jstuff/school/uvic/305/a2/AssignmentTwo for ['tags', 'taghl_config.txt']
+Trying /home/jbud/jdrive/jstuff/school/uvic/305/a2/AssignmentTwo
+Found match: /home/jbud/jdrive/jstuff/school/uvic/305/a2/AssignmentTwo (/home/jbud/jdrive/jstuff/school/uvic/305/a2/AssignmentTwo/tags)
+Found location with UpFromFile
+Found file location: /home/jbud/jdrive/jstuff/school/uvic/305/a2/AssignmentTwo/types_*.taghl
+File does not exist
+No source dir set
+Current directory is now /home/jbud/jdrive/jstuff/school/uvic/305/a2/AssignmentTwo
+Using tags file directory
+Running generator with options:
+ - g:TagHighlightSettings: {}
+ - b:TagHighlightConfigFileOptions: UNSET
+ - b:TagHighlightSettings: {'SourceDir': '/home/jbud/jdrive/jstuff/school/uvic/305/a2/AssignmentTwo', 'TypesFileLocation': '/home/jbud/jdrive/jstuff/school/uvic/305/a2/AssignmentTwo', 'CtagsFileLocation': '/home/jbud/jdrive/jstuff/school/uvic/305/a2/AssignmentTwo', 'CtagsExeFull': '/usr/bin/ctags'}
+Python variant is if_pyth
+Python Command is py
+Python Path is 
+Python version reported as: 2.7.3 (default, Aug  1 2012, 05:27:35) 
+[GCC 4.6.3]
+Using variant: if_pyth
+UpdateTypesFile() complete, current directory is now /home/jbud/jdrive/jstuff/school/uvic/305/a2/AssignmentTwo
+Locating file CONFIG with suffix 
+Priority: ['Explicit', 'UpFromFile', 'CurrentDirectory']
+Searching up from /home/jbud/jdrive/jstuff/school/uvic/305/a2/AssignmentTwo for ['tags', 'taghl_config.txt']
+Trying /home/jbud/jdrive/jstuff/school/uvic/305/a2/AssignmentTwo
+Found match: /home/jbud/jdrive/jstuff/school/uvic/305/a2/AssignmentTwo (/home/jbud/jdrive/jstuff/school/uvic/305/a2/AssignmentTwo/tags)
+Found location with UpFromFile
+Found file location: /home/jbud/jdrive/jstuff/school/uvic/305/a2/AssignmentTwo/taghl_config.txt
+File does not exist
+No project config file
+Reading Types by Extension
+Reading types with ExtensionLookup at 20130201-205833
+Could not find types with method Extension
+UpdateAndRead() complete
+Reading Types by Syntax
+Read Types by Syntax not specified
+Reading Types by FileType
+Read Types by FileType not specified
+Reading Types by Extension
+Reading types with ExtensionLookup at 20130201-205909
+UpdateAndRead() called with parameter 0
+Running UpdateTypesFile function at 20130201-205921
+Current directory is /home/jbud/jdrive/jstuff/school/uvic/305/a2/AssignmentTwo
+Current file is /home/jbud/jdrive/jstuff/school/uvic/305/a2/AssignmentTwo/geometry.cpp
+Release Info:{'VersionInfo': {}, 'LastRelease': '2.1.5'}
+Global options (g:TagHighlightSettings): {}
+Buffer options (b:TagHighlightSettings): {}
+Locating file CONFIG with suffix 
+Priority: ['Explicit', 'UpFromFile', 'CurrentDirectory']
+Searching up from /home/jbud/jdrive/jstuff/school/uvic/305/a2/AssignmentTwo for ['tags', 'taghl_config.txt']
+Trying /home/jbud/jdrive/jstuff/school/uvic/305/a2/AssignmentTwo
+Found match: /home/jbud/jdrive/jstuff/school/uvic/305/a2/AssignmentTwo (/home/jbud/jdrive/jstuff/school/uvic/305/a2/AssignmentTwo/tags)
+Found location with UpFromFile
+Found file location: /home/jbud/jdrive/jstuff/school/uvic/305/a2/AssignmentTwo/taghl_config.txt
+File exists
+Project config file options: {'IncludeLocals': 'True'}
+CtagsExecutable not set, searching for 'ctags' in path
+Locating file TAGS with suffix 
+Priority: ['Explicit', 'UpFromFile', 'CurrentDirectory']
+Searching up from /home/jbud/jdrive/jstuff/school/uvic/305/a2/AssignmentTwo for ['tags', 'taghl_config.txt']
+Trying /home/jbud/jdrive/jstuff/school/uvic/305/a2/AssignmentTwo
+Found match: /home/jbud/jdrive/jstuff/school/uvic/305/a2/AssignmentTwo (/home/jbud/jdrive/jstuff/school/uvic/305/a2/AssignmentTwo/tags)
+Found location with UpFromFile
+Found file location: /home/jbud/jdrive/jstuff/school/uvic/305/a2/AssignmentTwo/tags
+File exists
+Locating file TYPES with suffix *
+Priority: ['Explicit', 'UpFromFile', 'CurrentDirectory']
+Searching up from /home/jbud/jdrive/jstuff/school/uvic/305/a2/AssignmentTwo for ['tags', 'taghl_config.txt']
+Trying /home/jbud/jdrive/jstuff/school/uvic/305/a2/AssignmentTwo
+Found match: /home/jbud/jdrive/jstuff/school/uvic/305/a2/AssignmentTwo (/home/jbud/jdrive/jstuff/school/uvic/305/a2/AssignmentTwo/tags)
+Found location with UpFromFile
+Found file location: /home/jbud/jdrive/jstuff/school/uvic/305/a2/AssignmentTwo/types_*.taghl
+File does not exist
+No source dir set
+Current directory is now /home/jbud/jdrive/jstuff/school/uvic/305/a2/AssignmentTwo
+Using project config file directory
+Running generator with options:
+ - g:TagHighlightSettings: {}
+ - b:TagHighlightConfigFileOptions: {'IncludeLocals': 'True'}
+ - b:TagHighlightSettings: {'SourceDir': '/home/jbud/jdrive/jstuff/school/uvic/305/a2/AssignmentTwo', 'TypesFileLocation': '/home/jbud/jdrive/jstuff/school/uvic/305/a2/AssignmentTwo', 'CtagsFileLocation': '/home/jbud/jdrive/jstuff/school/uvic/305/a2/AssignmentTwo', 'CtagsExeFull': '/usr/bin/ctags'}
+Python variant is if_pyth
+Python Command is py
+Python Path is 
+Python version reported as: 2.7.3 (default, Aug  1 2012, 05:27:35) 
+[GCC 4.6.3]
+Using variant: if_pyth
+UpdateTypesFile() complete, current directory is now /home/jbud/jdrive/jstuff/school/uvic/305/a2/AssignmentTwo
+Locating file CONFIG with suffix 
+Priority: ['Explicit', 'UpFromFile', 'CurrentDirectory']
+Searching up from /home/jbud/jdrive/jstuff/school/uvic/305/a2/AssignmentTwo for ['tags', 'taghl_config.txt']
+Trying /home/jbud/jdrive/jstuff/school/uvic/305/a2/AssignmentTwo
+Found match: /home/jbud/jdrive/jstuff/school/uvic/305/a2/AssignmentTwo (/home/jbud/jdrive/jstuff/school/uvic/305/a2/AssignmentTwo/tags)
+Found location with UpFromFile
+Found file location: /home/jbud/jdrive/jstuff/school/uvic/305/a2/AssignmentTwo/taghl_config.txt
+File exists
+Reading Types by Extension
+Reading types with ExtensionLookup at 20130201-205922
+Locating file CONFIG with suffix 
+Priority: ['Explicit', 'UpFromFile', 'CurrentDirectory']
+Searching up from /home/jbud/jdrive/jstuff/school/uvic/305/a2/AssignmentTwo for ['tags', 'taghl_config.txt']
+Trying /home/jbud/jdrive/jstuff/school/uvic/305/a2/AssignmentTwo
+Found match: /home/jbud/jdrive/jstuff/school/uvic/305/a2/AssignmentTwo (/home/jbud/jdrive/jstuff/school/uvic/305/a2/AssignmentTwo/tags)
+Found location with UpFromFile
+Found file location: /home/jbud/jdrive/jstuff/school/uvic/305/a2/AssignmentTwo/taghl_config.txt
+File exists
+Reading types of suffix c for file geometry.cpp
+Skip List is [] (length 0)
+Searching for types file
+Locating file TYPES with suffix c
+Priority: ['Explicit', 'UpFromFile', 'CurrentDirectory']
+Searching up from /home/jbud/jdrive/jstuff/school/uvic/305/a2/AssignmentTwo for ['tags', 'taghl_config.txt']
+Trying /home/jbud/jdrive/jstuff/school/uvic/305/a2/AssignmentTwo
+Found match: /home/jbud/jdrive/jstuff/school/uvic/305/a2/AssignmentTwo (/home/jbud/jdrive/jstuff/school/uvic/305/a2/AssignmentTwo/tags)
+Found location with UpFromFile
+Found file location: /home/jbud/jdrive/jstuff/school/uvic/305/a2/AssignmentTwo/types_c.taghl
+File does not exist
+Searching for user libraries
+Library Dir: .
+Library List: []
+Finding library files for current file with suffix c
+Checking Qt4
+Library(Qt4): Checking MatchStart
+No match:Qt4
+Checking wxpython
+No match:wxpython
+Checking JDK
+No match:JDK
+Checking PySide
+No match:PySide
+Checking wxWidgets
+Library(wxWidgets): Checking MatchStart
+No match:wxWidgets
+Checking Android SDK
+No match:Android SDK
+Calling special handler TagHighlight#SpecialHandlers#CRainbowHandler
+Language handler for rainbow.vim compatibility
+ReadTypes complete
+Success with method Extension
+Locating file CONFIG with suffix 
+Priority: ['Explicit', 'UpFromFile', 'CurrentDirectory']
+Searching up from /home/jbud/jdrive/jstuff/school/uvic/305/a2/AssignmentTwo for ['tags', 'taghl_config.txt']
+Trying /home/jbud/jdrive/jstuff/school/uvic/305/a2/AssignmentTwo
+Found match: /home/jbud/jdrive/jstuff/school/uvic/305/a2/AssignmentTwo (/home/jbud/jdrive/jstuff/school/uvic/305/a2/AssignmentTwo/tags)
+Found location with UpFromFile
+Found file location: /home/jbud/jdrive/jstuff/school/uvic/305/a2/AssignmentTwo/taghl_config.txt
+File exists
+Reading Types by Extension
+Reading types with ExtensionLookup at 20130201-205922
+Could not find types with method Extension
+Locating file CONFIG with suffix 
+Priority: ['Explicit', 'UpFromFile', 'CurrentDirectory']
+Searching up from /home/jbud/jdrive/jstuff/school/uvic/305/a2/AssignmentTwo for ['tags', 'taghl_config.txt']
+Trying /home/jbud/jdrive/jstuff/school/uvic/305/a2/AssignmentTwo
+Found match: /home/jbud/jdrive/jstuff/school/uvic/305/a2/AssignmentTwo (/home/jbud/jdrive/jstuff/school/uvic/305/a2/AssignmentTwo/tags)
+Found location with UpFromFile
+Found file location: /home/jbud/jdrive/jstuff/school/uvic/305/a2/AssignmentTwo/taghl_config.txt
+File exists
+Reading Types by Extension
+Reading types with ExtensionLookup at 20130201-205922
+Could not find types with method Extension
+UpdateAndRead() complete
+Reading Types by Extension
+Reading types with ExtensionLookup at 20130201-205939
