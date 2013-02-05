@@ -1,6 +1,7 @@
 #ifndef MATRIX_H
 #define MATRIX_H
 
+#include <cstdio> // used for debugging purposes (printf)
 /**
  *  @todo assignment two
  *  1. extend these matrix classes to support all the basic linear algebra functions
@@ -21,6 +22,7 @@
  *	|1 4 7|
  *	|2 5 8|
  */
+class Matrix4x4; // reference for matrix3x3 conversions to matrix4x4
 class Matrix3x3
 {
 public:
@@ -37,6 +39,23 @@ public:
      *	generates the identity matrix
      */
     void loadIdentity();
+
+	/*************************************************************************/
+	/** Matrix Algebra **/
+	void print();
+	Matrix3x3& operator= (Matrix3x3 const&);
+	Matrix3x3(Matrix3x3 const&);
+	operator Matrix4x4() const;
+	float& operator[] (int);
+	float operator[] (int) const;
+	Matrix3x3 operator+ (Matrix3x3 const&);
+	Matrix3x3 operator- (Matrix3x3 const&);
+	Matrix3x3 operator* (Matrix3x3 const&);
+	Matrix3x3 operator* (float);
+	Matrix3x3& operator+= (Matrix3x3 const&);
+	Matrix3x3& operator-= (Matrix3x3 const&);
+	Matrix3x3& operator*= (Matrix3x3 const&);
+	Matrix3x3& operator*= (float);
 
 };
 
@@ -65,6 +84,23 @@ public:
      *	generates the identity matrix
      */
     void loadIdentity();
+
+	/*************************************************************************/
+	/** Matrix Algebra **/
+	void print();
+	Matrix4x4& operator= (Matrix4x4 const&);
+	Matrix4x4(Matrix4x4 const&);
+	operator Matrix3x3() const;
+	float& operator[] (int);
+	float operator[] (int) const;
+	Matrix4x4 operator+ (Matrix4x4 const&);
+	Matrix4x4 operator- (Matrix4x4 const&);
+	Matrix4x4 operator* (Matrix4x4 const&);
+	Matrix4x4 operator* (float);
+	Matrix4x4& operator+= (Matrix4x4 const&);
+	Matrix4x4& operator-= (Matrix4x4 const&);
+	Matrix4x4& operator*= (Matrix4x4 const&);
+	Matrix4x4& operator*= (float);
 };
 
 #endif // MATRIX_H

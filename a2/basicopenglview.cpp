@@ -140,7 +140,7 @@ void BasicOpenGLView::keyReleaseEvent(QKeyEvent *event)
 
 void BasicOpenGLView::translateGeometries_x(int x)
 {
-	printf("Translating: %i\n", x);
+	printf("Translating x: %i\n", x);
 
 
 	// iterate through each geometry to translate
@@ -154,43 +154,115 @@ void BasicOpenGLView::translateGeometries_x(int x)
 
 void BasicOpenGLView::translateGeometries_y(int y)
 {
-	printf("Translating: %i\n", y);
+	printf("Translating y: %i\n", y);
+
+
+	// iterate through each geometry to translate
+    std::map<std::string, Geometry *>::iterator it = mGeometries.begin();
+    while (it != mGeometries.end())
+    {
+		it->second->translate(Vector3(0, y, 0));
+        ++it;
+    }
 }
 
 void BasicOpenGLView::translateGeometries_z(int z)
 {
-	printf("Translating: %i\n", z);
+	printf("Translating z: %i\n", z);
+
+
+	// iterate through each geometry to translate
+    std::map<std::string, Geometry *>::iterator it = mGeometries.begin();
+    while (it != mGeometries.end())
+    {
+		it->second->translate(Vector3(0, 0, z));
+        ++it;
+    }
 }
 
 void BasicOpenGLView::scaleGeometries_x(int x)
 {
-	printf("Scaling: %i\n", x);
+	printf("Scaling x: %i\n", x);
+
+
+	// iterate through each geometry to scale
+    std::map<std::string, Geometry *>::iterator it = mGeometries.begin();
+    while (it != mGeometries.end())
+    {
+		it->second->scaleX(x);
+        ++it;
+    }
 }
 
 void BasicOpenGLView::scaleGeometries_y(int y)
 {
-	printf("Scaling: %i\n", y);
+	printf("Scaling y: %i\n", y);
+
+
+	// iterate through each geometry to scale
+    std::map<std::string, Geometry *>::iterator it = mGeometries.begin();
+    while (it != mGeometries.end())
+    {
+		it->second->scaleY(y);
+        ++it;
+    }
 }
 
 
 void BasicOpenGLView::scaleGeometries_z(int z)
 {
-	printf("Scaling: %i\n", z);
+	printf("Scaling z: %i\n", z);
+
+
+	// iterate through each geometry to scale
+    std::map<std::string, Geometry *>::iterator it = mGeometries.begin();
+    while (it != mGeometries.end())
+    {
+		it->second->scaleZ(z);
+        ++it;
+    }
 }
 
 
 void BasicOpenGLView::rotateGeometries_x(int x)
 {
-	printf("Rotating: %i\n", x);
+	printf("Rotating x: %i\n", x);
+
+
+	// iterate through each geometry to scale
+    std::map<std::string, Geometry *>::iterator it = mGeometries.begin();
+    while (it != mGeometries.end())
+    {
+		it->second->rotateX(x);
+        ++it;
+    }
 }
 
 void BasicOpenGLView::rotateGeometries_y(int y)
 {
-	printf("Rotating: %i\n", y);
+	printf("Rotating y: %i\n", y);
+
+
+	// iterate through each geometry to scale
+    std::map<std::string, Geometry *>::iterator it = mGeometries.begin();
+    while (it != mGeometries.end())
+    {
+		it->second->rotateY(y);
+        ++it;
+    }
 }
 
 void BasicOpenGLView::rotateGeometries_z(int z)
 {
-	printf("Rotating: %i\n", z);
+	printf("Rotating z: %i\n", z);
+
+
+	// iterate through each geometry to scale
+    std::map<std::string, Geometry *>::iterator it = mGeometries.begin();
+    while (it != mGeometries.end())
+    {
+		it->second->rotateZ(z);
+        ++it;
+    }
 }
 

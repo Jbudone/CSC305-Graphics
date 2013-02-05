@@ -1,6 +1,7 @@
 #ifndef VECTOR_H
 #define VECTOR_H
 
+#include <cmath> // necessary for square roots
 /**
  *  @todo assignment two
  *  extend these classes to support the basic linear algebra functions, including dot and cross product
@@ -12,6 +13,7 @@
  * given a Vector3 myVec3; the single elements can either
  * be accessed using myVec3.x myVec3.y myVec3.z or myVec3.elements[index]
  */
+class Vector4; // Necessary for conversions
 class Vector3
 {
 public:
@@ -39,6 +41,22 @@ public:
     Vector3(float m_x = 0.0f, float m_y = 0.0f, float m_z = 0.0f);
 
 
+	/******************************************************************************/
+	/** Vector Algebra **/
+	Vector3& operator= (Vector3 const&);
+	Vector3(Vector3 const&);
+	operator Vector4() const;
+	Vector3 operator+ (Vector3 const&);
+	Vector3 operator- (Vector3 const&);
+	Vector3 operator* (float);
+	Vector3& operator+= (Vector3 const&);
+	Vector3& operator-= (Vector3 const&);
+	Vector3& operator*= (float);
+
+	float dot(Vector3 const&);
+	Vector3 cross(Vector3 const&);
+	float sqlength();
+	void normalize();
 };
 
 /**
@@ -73,6 +91,23 @@ public:
      * @param m_w the w value
      */
     Vector4(float m_x = 0.0f, float m_y = 0.0f, float m_z = 0.0f, float m_w = 1.0f);
+
+
+	/******************************************************************************/
+	/** Vector Algebra **/
+	Vector4& operator= (Vector4 const&);
+	Vector4(Vector4 const&);
+	operator Vector3() const;
+	Vector4 operator+ (Vector4 const&);
+	Vector4 operator- (Vector4 const&);
+	Vector4 operator* (float);
+	Vector4& operator+= (Vector4 const&);
+	Vector4& operator-= (Vector4 const&);
+	Vector4& operator*= (float);
+
+	float dot(Vector4 const&);
+	float sqlength();
+	void normalize();
 };
 
 #endif // VECTOR_H

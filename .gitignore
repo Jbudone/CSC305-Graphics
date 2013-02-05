@@ -1,4 +1,7 @@
 Makefile
+moc_*
+ui_mainwindow.*
+
 .DS_Store
 *.swp
 *.git

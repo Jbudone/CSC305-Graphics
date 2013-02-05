@@ -10,6 +10,29 @@
 
 int main(int argc, char *argv[])
 {
+	/***************************************************/
+	/** Matrix Algebra testing **/
+	// TODO: test the fact that operator+ changes lhs   (matc = mata + matb  ; does mata change?)
+
+	Matrix3x3 matA;
+	matA[0]=1; matA[3]=2; matA[6]=3;
+	matA[1]=4; matA[4]=5; matA[7]=6;
+	matA[2]=7; matA[5]=8; matA[8]=9;
+	Matrix3x3 matB;
+	matB[0]=1; matB[3]=2; matB[6]=3;
+	matB[1]=4; matB[4]=5; matB[7]=6;
+	matB[2]=7; matB[5]=8; matB[8]=9;
+	Matrix3x3 matC;
+
+	Matrix4x4 mat = (((Matrix4x4)( matA ) + (Matrix4x4)( matB )) - ((Matrix4x4)( matB ) * 2)) * 15;
+	mat *= 3;
+	mat += (Matrix4x4)matC;
+	mat.print();
+	mat *= ((Matrix4x4)matC * 5);
+	mat.print();
+	return 0;
+	
+
     QApplication a(argc, argv);
 
     // Specify an OpenGL 3.2 format using the Core profile.

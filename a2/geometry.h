@@ -4,6 +4,7 @@
 #include "vector.h"
 #include <vector>
 #include <string>
+#include <cmath>
 #include "supporting_files/s_program.h"
 #include "matrix.h"
 
@@ -192,6 +193,14 @@ private:
     Program    * mProgram;          /**< the shader program we use to render our geometry. */
 
     float       mScaleFactor;           /**< the current scalefactor of the geometry. */
+
+	/*****************************************************************************************************/
+	/** Geometry Manipulations **/
+	Matrix3x3 translation;
+	Matrix3x3 scale;
+	Matrix3x3 rotationX;
+	Matrix3x3 rotationY;
+	Matrix3x3 rotationZ;
 };
 
 
