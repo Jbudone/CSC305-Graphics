@@ -2,6 +2,7 @@
 #define MATRIX_H
 
 #include <cstdio> // used for debugging purposes (printf)
+#include <cmath>
 /**
  *  @todo assignment two
  *  1. extend these matrix classes to support all the basic linear algebra functions
@@ -57,6 +58,11 @@ public:
 	Matrix3x3& operator*= (Matrix3x3 const&);
 	Matrix3x3& operator*= (float);
 
+	Matrix3x3& scale(float,float,float);
+	Matrix3x3& translate(float,float,float);
+	Matrix3x3& rotateX(float);
+	Matrix3x3& rotateY(float);
+	Matrix3x3& rotateZ(float);
 };
 
 /**
@@ -101,6 +107,12 @@ public:
 	Matrix4x4& operator-= (Matrix4x4 const&);
 	Matrix4x4& operator*= (Matrix4x4 const&);
 	Matrix4x4& operator*= (float);
+
+	Matrix4x4& scale(float,float,float,float);
+	Matrix4x4& translate(float,float,float,float);
+	Matrix4x4& rotateX(float);
+	Matrix4x4& rotateY(float);
+	Matrix4x4& rotateZ(float);
 };
 
 #endif // MATRIX_H

@@ -196,11 +196,11 @@ private:
 
 	/*****************************************************************************************************/
 	/** Geometry Manipulations **/
-	Matrix3x3 translation;
-	Matrix3x3 scale;
-	Matrix3x3 rotationX;
-	Matrix3x3 rotationY;
-	Matrix3x3 rotationZ;
+	Matrix4x4 translation;
+	Matrix4x4 scale;
+	Matrix4x4 rotationX;
+	Matrix4x4 rotationY;
+	Matrix4x4 rotationZ;
 };
 
 

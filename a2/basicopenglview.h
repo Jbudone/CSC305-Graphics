@@ -162,6 +162,7 @@ private:
 	
 	bool	mFirstFrameDragging;			/**< if we are in the first dragging frame. */
 	Vector3	mLastMousePos;					/**< the last mouse position while dragging. */
+	float old_transX, old_transY, old_transZ; // old storage values of translations
 };
 
 #endif // BASICOPENGLVIEW_H

@@ -63,6 +63,87 @@ Matrix4x4 Matrix4x4::operator*(float factor) {
 
 /**************************************/
 
+/** Geometry Operations
+ * convenience operations for geometries
+ **/
+
+Matrix3x3& Matrix3x3::scale(float x=1, float y=1, float z=1) {
+	elements[0]*=x;
+	elements[4]*=y;
+	elements[8]*=z;
+	return *this;
+}
+
+Matrix4x4& Matrix4x4::scale(float x=1, float y=1, float z=1, float w=1) {
+	elements[0]*=x;
+	elements[5]*=y;
+	elements[10]*=z;
+	elements[15]*=w;
+	return *this;
+}
+
+Matrix3x3& Matrix3x3::translate(float x=0, float y=0, float z=0) {
+	elements[6]+=x;
+	elements[7]+=y;
+	elements[8]+=z;
+	return *this;
+}
+
+Matrix4x4& Matrix4x4::translate(float x=0, float y=0, float z=0, float w=0) {
+	elements[12]+=x;
+	elements[13]+=y;
+	elements[14]+=z;
+	elements[15]+=w;
+	return *this;
+}
+
+Matrix4x4& Matrix4x4::rotateX(float r) {
+	Matrix4x4 rot;
+	rot[5]=cos(r);
+	rot[10]=cos(r);
+	rot[9]=-sin(r);
+	rot[6]=sin(r);
+	*this = rot*(*this); // rotate this
+	return *this;
+}
+
+Matrix4x4& Matrix4x4::rotateY(float r) {
+	Matrix4x4 rot;
+	rot[0]=cos(r);
+	rot[10]=cos(r);
+	rot[2]=-sin(r);
+	rot[8]=sin(r);
+	*this = rot*(*this); // rotate this
+	return *this;
+}
+
+Matrix4x4& Matrix4x4::rotateZ(float r) {
+	Matrix4x4 rot;
+	rot[0]=cos(r);
+	rot[5]=cos(r);
+	rot[4]=-sin(r);
+	rot[1]=sin(r);
+	*this = rot*(*this); // rotate this
+	return *this;
+}
+
+Matrix3x3& Matrix3x3::rotateX(float r) {
+	*this = ((Matrix4x4)*this).rotateX(r);
+	return *this;
+}
+
+Matrix3x3& Matrix3x3::rotateY(float r) {
+	*this = ((Matrix4x4)*this).rotateY(r);
+	return *this;
+}
+
+Matrix3x3& Matrix3x3::rotateZ(float r) {
+	*this = ((Matrix4x4)*this).rotateZ(r);
+	return *this;
+}
+
+/**************************************/
+
 /** Printing matrices to console
  *  pretty useful for debugging purposes..
  **/

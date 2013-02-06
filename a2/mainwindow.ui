@@ -174,6 +174,12 @@
                <height>20</height>
               </size>
              </property>
+             <property name="minimum">
+              <number>-200</number>
+             </property>
+             <property name="maximum">
+              <number>200</number>
+             </property>
              <property name="value">
               <number>0</number>
              </property>
@@ -202,6 +208,12 @@
                <height>20</height>
               </size>
              </property>
+             <property name="minimum">
+              <number>-200</number>
+             </property>
+             <property name="maximum">
+              <number>200</number>
+             </property>
              <property name="orientation">
               <enum>Qt::Horizontal</enum>
              </property>
@@ -226,6 +238,12 @@
                <width>16777215</width>
                <height>20</height>
               </size>
+             </property>
+             <property name="minimum">
+              <number>-200</number>
+             </property>
+             <property name="maximum">
+              <number>200</number>
              </property>
              <property name="orientation">
               <enum>Qt::Horizontal</enum>
@@ -276,8 +294,6 @@
            </item>
           </layout>
          </widget>
-         <zorder>layoutWidget</zorder>
-         <zorder>layoutWidget</zorder>
         </widget>
        </item>
        <item>
@@ -360,6 +376,12 @@
                <height>20</height>
               </size>
              </property>
+             <property name="minimum">
+              <number>-628</number>
+             </property>
+             <property name="maximum">
+              <number>628</number>
+             </property>
              <property name="value">
               <number>0</number>
              </property>
@@ -388,6 +410,12 @@
                <height>20</height>
               </size>
              </property>
+             <property name="minimum">
+              <number>-628</number>
+             </property>
+             <property name="maximum">
+              <number>628</number>
+             </property>
              <property name="orientation">
               <enum>Qt::Horizontal</enum>
              </property>
@@ -412,6 +440,12 @@
                <width>16777215</width>
                <height>20</height>
               </size>
+             </property>
+             <property name="minimum">
+              <number>-628</number>
+             </property>
+             <property name="maximum">
+              <number>628</number>
              </property>
              <property name="orientation">
               <enum>Qt::Horizontal</enum>
@@ -505,8 +539,14 @@
                <height>20</height>
               </size>
              </property>
-             <property name="value">
+             <property name="minimum">
               <number>0</number>
+             </property>
+             <property name="maximum">
+              <number>100</number>
+             </property>
+             <property name="value">
+              <number>10</number>
              </property>
              <property name="orientation">
               <enum>Qt::Horizontal</enum>
@@ -533,6 +573,15 @@
                <height>20</height>
               </size>
              </property>
+             <property name="minimum">
+              <number>0</number>
+             </property>
+             <property name="maximum">
+              <number>100</number>
+             </property>
+             <property name="value">
+              <number>10</number>
+             </property>
              <property name="orientation">
               <enum>Qt::Horizontal</enum>
              </property>
@@ -557,6 +606,15 @@
                <width>16777215</width>
                <height>20</height>
               </size>
+             </property>
+             <property name="minimum">
+              <number>0</number>
+             </property>
+             <property name="maximum">
+              <number>100</number>
+             </property>
+             <property name="value">
+              <number>10</number>
              </property>
              <property name="orientation">
               <enum>Qt::Horizontal</enum>

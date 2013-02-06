@@ -49,9 +49,11 @@ void Geometry::translate(Vector3 m_Translation)
      *  @todo assignment two
      *  add the new translation to the old one
      */
-	translation[6]=m_Translation.x;
-	translation[7]=m_Translation.y;
-	translation[8]=m_Translation.z;
+	translation[12]=m_Translation.x;
+	translation[13]=m_Translation.y;
+	translation[14]=m_Translation.z;
+
+	translation.print();
 }
 
 void Geometry::scaleX(float m_ScaleFactor)
@@ -69,7 +71,7 @@ void Geometry::scaleY(float m_ScaleFactor)
      *  @todo assignment two
      *  add the new scale y to the old one
      */
-	scale[4]=m_ScaleFactor;
+	scale[5]=m_ScaleFactor;
 }
 
 void Geometry::scaleZ(float m_ScaleFactor)
@@ -78,7 +80,7 @@ void Geometry::scaleZ(float m_ScaleFactor)
      *  @todo assignment two
      *  add the new scale z to the old one
      */
-	scale[8]=m_ScaleFactor;
+	scale[10]=m_ScaleFactor;
 }
 
 void Geometry::rotateX(float m_Degrees)
@@ -87,11 +89,10 @@ void Geometry::rotateX(float m_Degrees)
      *  @todo assignment two
      *  add the new rotate x to the old one
      */
-	rotationX[0]=1;
-	rotationX[4]=cos(m_Degrees);
-	rotationX[8]=cos(m_Degrees);
-	rotationX[7]=-sin(m_Degrees);
-	rotationX[5]=sin(m_Degrees);
+	rotationX[5]=cos(m_Degrees);
+	rotationX[10]=cos(m_Degrees);
+	rotationX[9]=-sin(m_Degrees);
+	rotationX[6]=sin(m_Degrees);
 }
 
 void Geometry::rotateY(float m_Degrees)
@@ -100,11 +101,10 @@ void Geometry::rotateY(float m_Degrees)
      *  @todo assignment two
      *  add the new rotate y to the old one
      */
-	rotationY[4]=1;
 	rotationY[0]=cos(m_Degrees);
-	rotationY[8]=cos(m_Degrees);
+	rotationY[10]=cos(m_Degrees);
 	rotationY[2]=-sin(m_Degrees);
-	rotationY[6]=sin(m_Degrees);
+	rotationY[8]=sin(m_Degrees);
 }
 
 void Geometry::rotateZ(float m_Degrees)
@@ -113,10 +113,9 @@ void Geometry::rotateZ(float m_Degrees)
      *  @todo assignment two
      *  add the new rotate z to the old one
      */
-	rotationZ[8]=1;
 	rotationZ[0]=cos(m_Degrees);
-	rotationZ[4]=cos(m_Degrees);
-	rotationZ[3]=-sin(m_Degrees);
+	rotationZ[5]=cos(m_Degrees);
+	rotationZ[4]=-sin(m_Degrees);
 	rotationZ[1]=sin(m_Degrees);
 }
 
@@ -132,4 +131,5 @@ void Geometry::createModelMatrix(bool m_UsePostMultiply)
      */
 
 	// NOTE TO SELF: translate * rotate * scale
+	mModelMatrix = ((((translation * rotationX) * rotationY) * rotationZ) * scale);
 }

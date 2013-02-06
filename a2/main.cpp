@@ -14,6 +14,7 @@ int main(int argc, char *argv[])
 	/** Matrix Algebra testing **/
 	// TODO: test the fact that operator+ changes lhs   (matc = mata + matb  ; does mata change?)
 
+	/*
 	Matrix3x3 matA;
 	matA[0]=1; matA[3]=2; matA[6]=3;
 	matA[1]=4; matA[4]=5; matA[7]=6;
@@ -24,13 +25,18 @@ int main(int argc, char *argv[])
 	matB[2]=7; matB[5]=8; matB[8]=9;
 	Matrix3x3 matC;
 
-	Matrix4x4 mat = (((Matrix4x4)( matA ) + (Matrix4x4)( matB )) - ((Matrix4x4)( matB ) * 2)) * 15;
-	mat *= 3;
-	mat += (Matrix4x4)matC;
-	mat.print();
-	mat *= ((Matrix4x4)matC * 5);
-	mat.print();
+	matC = matA + matB;
+	matA.print();
+	matC.print();
+// 
+// 	Matrix4x4 mat = (((Matrix4x4)( matA ) + (Matrix4x4)( matB )) - ((Matrix4x4)( matB ) * 2)) * 15;
+// 	mat *= 3;
+// 	mat += (Matrix4x4)matC;
+// 	mat.print();
+// 	mat *= ((Matrix4x4)matC * 5);
+// 	mat.print();
 	return 0;
+	*/
 	
 
     QApplication a(argc, argv);
