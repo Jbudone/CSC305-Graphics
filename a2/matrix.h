@@ -3,6 +3,7 @@
 
 #include <cstdio> // used for debugging purposes (printf)
 #include <cmath>
+#include "vector.h"
 /**
  *  @todo assignment two
  *  1. extend these matrix classes to support all the basic linear algebra functions
@@ -113,6 +114,12 @@ public:
 	Matrix4x4& rotateX(float);
 	Matrix4x4& rotateY(float);
 	Matrix4x4& rotateZ(float);
+
+	Matrix4x4& projectPerspective(float,float,float,float);
+	Matrix4x4& projectOrthographic(float,float,float,float,float,float);
+	Matrix4x4& createView(Vector3,Vector3,Vector3);
+	Matrix4x4& invert();
+
 };
 
 #endif // MATRIX_H

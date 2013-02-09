@@ -130,6 +130,10 @@ void Geometry::createModelMatrix(bool m_UsePostMultiply)
      * store the matrix in mModelMatrix
      */
 
-	// NOTE TO SELF: translate * rotate * scale
-	mModelMatrix = ((((translation * rotationX) * rotationY) * rotationZ) * scale);
+	// concatenation order: translate * rotate * scale
+	if (m_UsePostMultiply) {
+		mModelMatrix = ((((translation * rotationX) * rotationY) * rotationZ) * scale);
+	} else {
+		mModelMatrix = ((((scale  * rotationX) * rotationY) * rotationZ) * translation);
+	}
 }

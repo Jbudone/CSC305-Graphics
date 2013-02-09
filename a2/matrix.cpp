@@ -24,6 +24,189 @@ void Matrix4x4::loadIdentity()
 }
 
 /********************************************************************************************/
+/** Projections and View Matrices **/
+
+Matrix4x4& Matrix4x4::projectPerspective(float fov,float aspect,float near,float far) {
+	Matrix4x4 mat;
+	*this = (mat); // clear elements
+	float top = near * tan(fov * 0.5f);
+	float bottom = -top;
+	float left = bottom * aspect;
+	float right = top * aspect;
+	elements[0] = near / right;
+	elements[5] = near / top;
+	elements[10] = (-far - near) / (far - near);
+	elements[11] = -1;
+	elements[14] = (-2 * far * near) / (far - near);
+	elements[15] = 0;
+	return *this;
+}
+
+Matrix4x4& Matrix4x4::projectOrthographic(float left,float right,float top,float bottom,float near,float far) {
+	Matrix4x4 mat;
+	*this = (mat); // clear elements
+	elements[0]=2/(right-left);
+	elements[5]=2/(top-bottom);
+	elements[10]=-2/(far-near);
+	elements[12]=-(right+left)/(right-left);
+	elements[13]=-(top+bottom)/(top-bottom);
+	elements[14]=-(far+near)/(far-near);
+	elements[15]=1;
+	return *this;
+}
+
+
+Matrix4x4& Matrix4x4::createView(Vector3 eye,Vector3 at,Vector3 up) {
+	Vector3 a;
+	a=(eye-at); a.normalize();
+	Vector3 zaxis = a;
+	a=up; a.cross(zaxis); a.normalize();
+	Vector3 xaxis = a;
+	a=zaxis; a.cross(xaxis); a.normalize();
+	Vector3 yaxis = a;
+
+	Matrix4x4 orientation;
+	orientation[0]=xaxis.x; orientation[1]=xaxis.y; orientation[2]=xaxis.z;
+	orientation[4]=yaxis.x; orientation[5]=yaxis.y; orientation[6]=yaxis.z;
+	orientation[8]=zaxis.x; orientation[9]=zaxis.y; orientation[10]=zaxis.z;
+	orientation[12]=-(xaxis.dot(eye));
+	orientation[13]=-(yaxis.dot(eye));
+	orientation[14]=-(zaxis.dot(eye));
+	orientation[15]=1;
+	*this = orientation;
+	return *this;
+}
+
+// source: http://stackoverflow.com/questions/1148309/inverting-a-4x4-matrix
+Matrix4x4& Matrix4x4::invert() {
+	float inv[16], det;
+
+    inv[0] = elements[5]  * elements[10] * elements[15] - 
+             elements[5]  * elements[11] * elements[14] - 
+             elements[9]  * elements[6]  * elements[15] + 
+             elements[9]  * elements[7]  * elements[14] +
+             elements[13] * elements[6]  * elements[11] - 
+             elements[13] * elements[7]  * elements[10];
+
+    inv[4] = -elements[4]  * elements[10] * elements[15] + 
+              elements[4]  * elements[11] * elements[14] + 
+              elements[8]  * elements[6]  * elements[15] - 
+              elements[8]  * elements[7]  * elements[14] - 
+              elements[12] * elements[6]  * elements[11] + 
+              elements[12] * elements[7]  * elements[10];
+
+    inv[8] = elements[4]  * elements[9] * elements[15] - 
+             elements[4]  * elements[11] * elements[13] - 
+             elements[8]  * elements[5] * elements[15] + 
+             elements[8]  * elements[7] * elements[13] + 
+             elements[12] * elements[5] * elements[11] - 
+             elements[12] * elements[7] * elements[9];
+
+    inv[12] = -elements[4]  * elements[9] * elements[14] + 
+               elements[4]  * elements[10] * elements[13] +
+               elements[8]  * elements[5] * elements[14] - 
+               elements[8]  * elements[6] * elements[13] - 
+               elements[12] * elements[5] * elements[10] + 
+               elements[12] * elements[6] * elements[9];
+
+    inv[1] = -elements[1]  * elements[10] * elements[15] + 
+              elements[1]  * elements[11] * elements[14] + 
+              elements[9]  * elements[2] * elements[15] - 
+              elements[9]  * elements[3] * elements[14] - 
+              elements[13] * elements[2] * elements[11] + 
+              elements[13] * elements[3] * elements[10];
+
+    inv[5] = elements[0]  * elements[10] * elements[15] - 
+             elements[0]  * elements[11] * elements[14] - 
+             elements[8]  * elements[2] * elements[15] + 
+             elements[8]  * elements[3] * elements[14] + 
+             elements[12] * elements[2] * elements[11] - 
+             elements[12] * elements[3] * elements[10];
+
+    inv[9] = -elements[0]  * elements[9] * elements[15] + 
+              elements[0]  * elements[11] * elements[13] + 
+              elements[8]  * elements[1] * elements[15] - 
+              elements[8]  * elements[3] * elements[13] - 
+              elements[12] * elements[1] * elements[11] + 
+              elements[12] * elements[3] * elements[9];
+
+    inv[13] = elements[0]  * elements[9] * elements[14] - 
+              elements[0]  * elements[10] * elements[13] - 
+              elements[8]  * elements[1] * elements[14] + 
+              elements[8]  * elements[2] * elements[13] + 
+              elements[12] * elements[1] * elements[10] - 
+              elements[12] * elements[2] * elements[9];
+
+    inv[2] = elements[1]  * elements[6] * elements[15] - 
+             elements[1]  * elements[7] * elements[14] - 
+             elements[5]  * elements[2] * elements[15] + 
+             elements[5]  * elements[3] * elements[14] + 
+             elements[13] * elements[2] * elements[7] - 
+             elements[13] * elements[3] * elements[6];
+
+    inv[6] = -elements[0]  * elements[6] * elements[15] + 
+              elements[0]  * elements[7] * elements[14] + 
+              elements[4]  * elements[2] * elements[15] - 
+              elements[4]  * elements[3] * elements[14] - 
+              elements[12] * elements[2] * elements[7] + 
+              elements[12] * elements[3] * elements[6];
+
+    inv[10] = elements[0]  * elements[5] * elements[15] - 
+              elements[0]  * elements[7] * elements[13] - 
+              elements[4]  * elements[1] * elements[15] + 
+              elements[4]  * elements[3] * elements[13] + 
+              elements[12] * elements[1] * elements[7] - 
+              elements[12] * elements[3] * elements[5];
+
+    inv[14] = -elements[0]  * elements[5] * elements[14] + 
+               elements[0]  * elements[6] * elements[13] + 
+               elements[4]  * elements[1] * elements[14] - 
+               elements[4]  * elements[2] * elements[13] - 
+               elements[12] * elements[1] * elements[6] + 
+               elements[12] * elements[2] * elements[5];
+
+    inv[3] = -elements[1] * elements[6] * elements[11] + 
+              elements[1] * elements[7] * elements[10] + 
+              elements[5] * elements[2] * elements[11] - 
+              elements[5] * elements[3] * elements[10] - 
+              elements[9] * elements[2] * elements[7] + 
+              elements[9] * elements[3] * elements[6];
+
+    inv[7] = elements[0] * elements[6] * elements[11] - 
+             elements[0] * elements[7] * elements[10] - 
+             elements[4] * elements[2] * elements[11] + 
+             elements[4] * elements[3] * elements[10] + 
+             elements[8] * elements[2] * elements[7] - 
+             elements[8] * elements[3] * elements[6];
+
+    inv[11] = -elements[0] * elements[5] * elements[11] + 
+               elements[0] * elements[7] * elements[9] + 
+               elements[4] * elements[1] * elements[11] - 
+               elements[4] * elements[3] * elements[9] - 
+               elements[8] * elements[1] * elements[7] + 
+               elements[8] * elements[3] * elements[5];
+
+    inv[15] = elements[0] * elements[5] * elements[10] - 
+              elements[0] * elements[6] * elements[9] - 
+              elements[4] * elements[1] * elements[10] + 
+              elements[4] * elements[2] * elements[9] + 
+              elements[8] * elements[1] * elements[6] - 
+              elements[8] * elements[2] * elements[5];
+
+    det = elements[0] * inv[0] + elements[1] * inv[4] + elements[2] * inv[8] + elements[3] * inv[12];
+
+    if (det == 0)
+        return *this;
+
+    det = 1.0 / det;
+
+    for (int i = 0; i < 16; i++)
+        elements[i] = inv[i] * det;
+
+	return *this;
+}
+
+/********************************************************************************************/
 /** Matrix Algebra **/
 
 
@@ -103,7 +286,7 @@ Matrix4x4& Matrix4x4::rotateX(float r) {
 	rot[10]=cos(r);
 	rot[9]=-sin(r);
 	rot[6]=sin(r);
-	*this = rot*(*this); // rotate this
+	*this = (*this)*rot;
 	return *this;
 }
 
@@ -113,7 +296,7 @@ Matrix4x4& Matrix4x4::rotateY(float r) {
 	rot[10]=cos(r);
 	rot[2]=-sin(r);
 	rot[8]=sin(r);
-	*this = rot*(*this); // rotate this
+	*this = (*this)*rot;
 	return *this;
 }
 
@@ -123,7 +306,7 @@ Matrix4x4& Matrix4x4::rotateZ(float r) {
 	rot[5]=cos(r);
 	rot[4]=-sin(r);
 	rot[1]=sin(r);
-	*this = rot*(*this); // rotate this
+	*this = (*this)*rot;
 	return *this;
 }
 
@@ -324,7 +507,7 @@ Matrix3x3& Matrix3x3::operator*=(float factor) {
 }
 
 Matrix4x4 Matrix4x4::operator-(Matrix4x4 const &mat) {
-	return ((*this * -1) + mat);
+	return ((*this) + (((Matrix4x4)mat)*-1));
 }
 
 Matrix4x4& Matrix4x4::operator+=(Matrix4x4 const &mat) {

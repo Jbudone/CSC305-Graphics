@@ -10,6 +10,7 @@
 #include <QMatrix4x4>
 #include "geometry.h"
 
+using namespace Qt;
 
 /**
   * @class  BasicOpenGLView
@@ -124,6 +125,12 @@ protected:
     void keyReleaseEvent ( QKeyEvent * event );
 
 
+	/**
+	 * mouseScrollEvent called when mouse wheel scrolled
+	 */
+	void wheelEvent(QWheelEvent *event);
+
+
 
 public slots:
 	/**************************************************************************************/
@@ -153,16 +160,34 @@ public slots:
 	void rotateGeometries_y(int);
 	void rotateGeometries_z(int);
 
+	/**
+	 * Options
+	 * Change options here
+	 */
+	void option_worldCrawler(bool);
+	void option_perspective(bool);
+	void option_postMultiply(bool);
+
+	void update_timer();
+
 private:
 
     Matrix4x4       mProjectionMatrix;              /**< the projection matrix to be used for rendering. */
     Matrix4x4       mViewMatrix;                    /**< the view matrix to be used for rendering. */
     bool            mUsePostMultiply;               /**< if the post multiply has to be used for the matrices. */
+	bool			mWorldCrawlerMode;				/**< if camera movement works in world crawler mode. */
+	bool			mPerspectiveMode;				/**< if we're using the perspective view. */
     std::map<std::string, Geometry *>   mGeometries;    /**< the map containing the filename of the geometry as key, and the pointer to the geometry as value. */
 	
 	bool	mFirstFrameDragging;			/**< if we are in the first dragging frame. */
 	Vector3	mLastMousePos;					/**< the last mouse position while dragging. */
 	float old_transX, old_transY, old_transZ; // old storage values of translations
+	Vector3 mMoveVector;					/**< the vector in which we're currently moving (from keydown). */
+	float mMoveScale;						/**< scaling the move vector in worldcrawler mode */
+	float fov;								/** < field of view. */
+	float aspect;							/** < aspect ratio. */
+	float plane_near, plane_far;			/** < near and far plane values. */
+	float frustum_top, frustum_bottom, frustum_left, frustum_right; /** < view frustum values. */
 };
 
 #endif // BASICOPENGLVIEW_H

@@ -38,6 +38,22 @@ MainWindow::MainWindow(QWidget *parent) :
 	connect(ui->slide_rotx, SIGNAL(valueChanged(int)), ui->oglwidget, SLOT(rotateGeometries_x(int)));
 	connect(ui->slide_roty, SIGNAL(valueChanged(int)), ui->oglwidget, SLOT(rotateGeometries_y(int)));
 	connect(ui->slide_rotz, SIGNAL(valueChanged(int)), ui->oglwidget, SLOT(rotateGeometries_z(int)));
+
+	/**
+	 * Connect the settings/options
+	 */
+	connect(ui->opt_worldCrawler, SIGNAL(toggled(bool)), ui->oglwidget, SLOT(option_worldCrawler(bool)));
+	connect(ui->opt_perspective, SIGNAL(toggled(bool)), ui->oglwidget, SLOT(option_perspective(bool)));
+	connect(ui->opt_postMultiply, SIGNAL(toggled(bool)), ui->oglwidget, SLOT(option_postMultiply(bool)));
+
+	/**
+	 *  Update timer (for worldcrawler fluid motion)
+	 *  this will allow the worldcrawler movement to be changed via. keydown and keyup events,
+	 *  then this update slot simply applies that movement vector in every call
+	 */
+	QTimer *timer = new QTimer(ui->oglwidget);
+	connect(timer, SIGNAL(timeout()), ui->oglwidget, SLOT(update_timer()));
+	timer->start(100);
 }
 
 void MainWindow::drawOpenGL()

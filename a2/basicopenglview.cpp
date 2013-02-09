@@ -42,7 +42,31 @@ void BasicOpenGLView::initializeGL()
      *  @todo assignment two
      *  initialize the mViewMatrix and mProjectionMatrix with starting values here
      */
+
+	// default options
 	old_transX=old_transY=old_transZ=0;
+	mPerspectiveMode=false;
+	mUsePostMultiply=false;
+	mWorldCrawlerMode=false;
+
+	// projection settings
+	fov=90.0f;
+	frustum_right=frustum_top=4.0f;
+	frustum_left=frustum_bottom=-frustum_right;
+	plane_near=0.1f; // NOTE: must be >0
+	plane_far=-4.0f;
+	aspect=((float)width())/((float)height());
+
+	mMoveScale=0.025; // used for worldcrawler mode
+	setFocusPolicy(Qt::StrongFocus); // this allows keypresses to be propagated to this widget
+
+
+	// Set initial projection
+	if (mPerspectiveMode) {
+		mProjectionMatrix.projectPerspective(fov,aspect,plane_near,plane_far);
+	} else {
+		mProjectionMatrix.projectOrthographic(frustum_left,frustum_right,frustum_top,frustum_bottom,plane_near,plane_far);
+	}
 }
 
 void BasicOpenGLView::resizeGL(int width, int height)
@@ -58,6 +82,12 @@ void BasicOpenGLView::resizeGL(int width, int height)
      *  Hint: for the swap between projection methods to work properly you will also
      *  need to add a function that responds to the switch in the UI
      */
+	if (mPerspectiveMode) {
+		aspect=((float)width)/((float)height);
+		mProjectionMatrix.projectPerspective(fov,aspect,plane_near,plane_far);
+	} else {
+		mProjectionMatrix.projectOrthographic(frustum_left,frustum_right,frustum_top,frustum_bottom,plane_near,plane_far);
+	}
 }
 
 void BasicOpenGLView::mousePressEvent(QMouseEvent *event)
@@ -109,8 +139,43 @@ void BasicOpenGLView::mouseMoveEvent(QMouseEvent *event)
      *  or to rotate the viewer in the XZ plane, depending on the selected mode in the
      *  UI (Arc Ball or World crawler)
      */
+	
+	Matrix4x4 rotX, rotY;
+	rotY.rotateY(difference.x);
+	rotX.rotateX(difference.y);
+	if (mWorldCrawlerMode) {
+		// World Crawler
+		mViewMatrix *= rotX;
+		mViewMatrix *= rotY;
+	} else {
+		// Arc-Ball
+		// Translate to origin, rotate, translate back
 
+		Matrix4x4 mViewMatrix_cpy, mViewMatrix_inv;
+		mViewMatrix_cpy=mViewMatrix_inv=mViewMatrix;
+		mViewMatrix_inv.invert();
+
+		mViewMatrix *= mViewMatrix_inv;
+		mViewMatrix *= rotX;
+		mViewMatrix *= rotY;
+		mViewMatrix *= mViewMatrix_cpy;
+	}
 	mLastMousePos = curPoint;
+}
+
+void BasicOpenGLView::wheelEvent(QWheelEvent *event) {
+	if (!mWorldCrawlerMode) {
+		float d=event->delta();
+		d/=1200;
+
+		Matrix4x4 mViewMatrix_cpy, mViewMatrix_inv;
+		mViewMatrix_cpy=mViewMatrix_inv=mViewMatrix;
+		mViewMatrix_inv.invert();
+
+		mViewMatrix *= mViewMatrix_inv;
+		mViewMatrix[14]+=d;
+		mViewMatrix *= mViewMatrix_cpy;
+	}
 }
 
 void BasicOpenGLView::keyPressEvent(QKeyEvent *event)
@@ -121,6 +186,23 @@ void BasicOpenGLView::keyPressEvent(QKeyEvent *event)
      *  the keyboard input (either arrow keys or WASD) to create the world crawler
      *  movement and create the mViewMatrix for it
      */
+	int key=event->key();
+	if (mWorldCrawlerMode) {
+		switch (key) {
+			case Key_Left: case Key_A:
+				mMoveVector.x+=mMoveScale;
+				break;
+			case Key_Up: case Key_W:
+				mMoveVector.z+=mMoveScale;
+				break;
+			case Key_Down: case Key_S:
+				mMoveVector.z-=mMoveScale;
+				break;
+			case Key_Right: case Key_D:
+				mMoveVector.x-=mMoveScale;
+				break;
+		}
+	}
 }
 
 void BasicOpenGLView::keyReleaseEvent(QKeyEvent *event)
@@ -131,6 +213,30 @@ void BasicOpenGLView::keyReleaseEvent(QKeyEvent *event)
      *  the keyboard input (either arrow keys or WASD) to create the world crawler
      *  movement and create the mViewMatrix for it
      */
+	int key=event->key();
+	if (mWorldCrawlerMode) {
+		switch (key) {
+			case Key_Left: case Key_A:
+				mMoveVector.x-=mMoveScale;
+				break;
+			case Key_Up: case Key_W:
+				mMoveVector.z-=mMoveScale;
+				break;
+			case Key_Down: case Key_S:
+				mMoveVector.z+=mMoveScale;
+				break;
+			case Key_Right: case Key_D:
+				mMoveVector.x+=mMoveScale;
+				break;
+		}
+	}
+}
+
+void BasicOpenGLView::update_timer() {
+	if (mWorldCrawlerMode) {
+		mViewMatrix[12]+=mMoveVector.x;
+		mViewMatrix[14]+=mMoveVector.z;
+	}
 }
 
 
@@ -277,5 +383,23 @@ void BasicOpenGLView::rotateGeometries_z(int z)
 		it->second->rotateZ(rot);
         ++it;
     }
+}
+
+void BasicOpenGLView::option_worldCrawler(bool checked) {
+	if(!(mWorldCrawlerMode=checked)) {
+		mMoveVector.x=0;
+		mMoveVector.z=0;
+	}
+}
+void BasicOpenGLView::option_perspective(bool checked) {
+	mPerspectiveMode=checked;
+	if (mPerspectiveMode) {
+		mProjectionMatrix.projectPerspective(fov,aspect,plane_near,plane_far);
+	} else {
+		mProjectionMatrix.projectOrthographic(frustum_left,frustum_right,frustum_top,frustum_bottom,plane_near,plane_far);
+	}
+}
+void BasicOpenGLView::option_postMultiply(bool checked) {
+	mUsePostMultiply=checked;
 }
 
