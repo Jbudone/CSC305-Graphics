@@ -465,6 +465,74 @@ bool Geometry::initDefaultShader()
 {
 
     const std::string vertexShader =
+
+            "#version 150\n"
+
+            "uniform mat4 projectionMatrix;\n"
+
+            "uniform mat4 viewMatrix;\n"
+
+            "uniform mat4 modelMatrix;\n"
+
+            "uniform int usePostMultiply;\n"
+
+            "in vec4 vertex;\n"
+
+            "in vec4 color;\n"
+
+            "out vec4 vColor;\n"
+
+            "void main()\n"
+
+            "{\n"
+
+            "   gl_Position = projectionMatrix * viewMatrix * modelMatrix * vertex;\n"
+
+            "   vColor = color;\n"
+
+            "}";
+
+    const std::string fragmentShader = "#version 150\n"
+
+            "in vec4 vColor;\n"
+
+            "out vec4 fColor;\n"
+
+            "void main()\n"
+
+            "{\n"
+
+            "   fColor = vColor;\n"
+
+            "}";
+
+	
+
+	
+
+    mProgram = new Program();
+
+	
+
+    Shader * vShader = new Shader(vertexShader, Shader::VERTEX);
+
+    vShader->load();
+
+    Shader * fShader = new Shader(fragmentShader, Shader::FRAGMENT);
+
+    fShader->load();
+
+	
+
+    mProgram->push_back(vShader);
+
+    mProgram->push_back(fShader);
+
+	
+
+    return mProgram->link();
+/*
+    const std::string vertexShader =
             "#version 150\n"
             "uniform mat4 projectionMatrix;\n"
             "uniform mat4 viewMatrix;\n"
@@ -504,4 +572,5 @@ bool Geometry::initDefaultShader()
     mProgram->push_back(fShader);
 	
     return mProgram->link();
+*/
 }
