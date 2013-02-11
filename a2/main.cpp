@@ -34,6 +34,24 @@ int main(int argc, char *argv[])
 	*/
 	
 	
+	/*
+	Vector3 eye,at,gaze;
+	Matrix4x4 rot;
+	eye=Vector3(0,0,3);
+	at=Vector3(1,0,0);
+	gaze=(at-eye);
+	rot.rotateY(1.57);
+	gaze=((Matrix3x3)rot)*gaze;
+	at=eye+gaze;
+
+
+
+	printf("eye: "); eye.print();
+	printf("at: "); at.print();
+	printf("gaze: "); gaze.print();
+	return 0;
+	*/
+	
 
     QApplication a(argc, argv);
 

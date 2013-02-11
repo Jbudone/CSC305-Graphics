@@ -2,6 +2,7 @@
 #define VECTOR_H
 
 #include <cmath> // necessary for square roots
+#include <cstdio>
 /**
  *  @todo assignment two
  *  extend these classes to support the basic linear algebra functions, including dot and cross product
@@ -57,6 +58,7 @@ public:
 	Vector3 cross(Vector3 const&);
 	float sqlength();
 	void normalize();
+	void print();
 };
 
 /**

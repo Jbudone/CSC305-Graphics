@@ -167,6 +167,8 @@ public slots:
 	void option_worldCrawler(bool);
 	void option_perspective(bool);
 	void option_postMultiply(bool);
+	void update_perspective(); // triggered whenever perspective mode switches
+	void reset_camera(); // triggered whenever we switch between camera mode (fps/arcball)
 
 	void update_timer();
 
@@ -187,7 +189,11 @@ private:
 	float fov;								/** < field of view. */
 	float aspect;							/** < aspect ratio. */
 	float plane_near, plane_far;			/** < near and far plane values. */
+	float plane_near_pers, plane_far_pers;
 	float frustum_top, frustum_bottom, frustum_left, frustum_right; /** < view frustum values. */
+	Vector3 eye, at, up; // current eye/at/up
+	Vector3 eye0_fps, at0_fps, up0_fps; // initial eye/at/up in fps (worldcrawler mode)
+	Vector3 eye0_arc, at0_arc, up0_arc; // initial eye/at/up in arcball mode
 };
 
 #endif // BASICOPENGLVIEW_H

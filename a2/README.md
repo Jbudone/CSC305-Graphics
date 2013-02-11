@@ -40,13 +40,13 @@ we in space). This is handled mostly within the camera movement.
 
 Camera Movement
 ===============
+note: both camera modes use different settings, and reset upon switch
 
 Arcball
-Picture a sphere centered at the origin, and a plane tangent to some point on that
-sphere, then our camera is aligned to and placed on that plane, looking at the
-origin. Moving around simply translates the camera to the origin, rotates the camera
-as expected, then appends the inverse translation of what we applied to get to the 
-origin.
+Rotates the gaze vector accordingly (gaze=eye-target), then changes the eye position
+based off the difference of the gaze vector (how much has the gaze vector rotated/moved)
+The up vector simply takes the new gaze vector and rotates it 90deg along the local-X
+space to make it perpendicular, and hence facing the upwards direction that we want.
 
 World Crawler
 Treats the camera as a FPS type camera. Move around using either WASD or Up/Left/Down
@@ -60,6 +60,6 @@ translation portion of the view matrix (hence moving the camera).
 TODO/Errors
 =============
 
-* Adding a new geometry after already having scaled/translated geometries will NOT
-	give the new geometry its intended initial manipulations (outside of my range)
+* Arcball: Cannot rotate along both X and Y; only one or the other 
+* Worldcrawler: Cannot rotate along X axis
 

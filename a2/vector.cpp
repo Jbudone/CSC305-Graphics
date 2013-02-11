@@ -40,10 +40,11 @@ float Vector3::sqlength() { return dot(*this); }
 Vector3 Vector3::cross(Vector3 const &vec) { return Vector3((y*vec.z)-(z*vec.y),(z*vec.x)-(x*vec.z),(x*vec.y)-(y*vec.x)); }
 void Vector3::normalize() {
 	float length=sqlength(); length = sqrt(length);
+	if (length==0) return;
 	x/=length; y/=length; z/=length;
 }
 
-
+void Vector3::print() { printf("vector3(%f,%f,%f)\n",x,y,z); }
 
 
 
@@ -71,5 +72,6 @@ float Vector4::dot(Vector4 const &vec) { return (x*vec.x + y*vec.y + z*vec.z + w
 float Vector4::sqlength() { return dot(*this); }
 void Vector4::normalize() {
 	float length=sqlength(); length = sqrt(length);
+	if (length==0) return;
 	x/=length; y/=length; z/=length; w/=length;
 }

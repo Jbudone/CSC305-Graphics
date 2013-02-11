@@ -60,15 +60,18 @@ Matrix4x4& Matrix4x4::createView(Vector3 eye,Vector3 at,Vector3 up) {
 	Vector3 a;
 	a=(eye-at); a.normalize();
 	Vector3 zaxis = a;
-	a=up; a.cross(zaxis); a.normalize();
+	a=up; a=a.cross(zaxis); a.normalize();
 	Vector3 xaxis = a;
-	a=zaxis; a.cross(xaxis); a.normalize();
+	a=zaxis; a=a.cross(xaxis); a.normalize();
 	Vector3 yaxis = a;
 
 	Matrix4x4 orientation;
 	orientation[0]=xaxis.x; orientation[1]=xaxis.y; orientation[2]=xaxis.z;
 	orientation[4]=yaxis.x; orientation[5]=yaxis.y; orientation[6]=yaxis.z;
 	orientation[8]=zaxis.x; orientation[9]=zaxis.y; orientation[10]=zaxis.z;
+	// orientation[0]=xaxis.x; orientation[1]=xaxis.y; orientation[2]=xaxis.z;
+	// orientation[4]=yaxis.x; orientation[5]=yaxis.y; orientation[6]=yaxis.z;
+	// orientation[8]=zaxis.x; orientation[9]=zaxis.y; orientation[10]=zaxis.z;
 	orientation[12]=-(xaxis.dot(eye));
 	orientation[13]=-(yaxis.dot(eye));
 	orientation[14]=-(zaxis.dot(eye));
@@ -242,6 +245,14 @@ Matrix4x4 Matrix4x4::operator*(float factor) {
 	}
 
 	return *this;
+}
+
+Vector3 Matrix3x3::operator*(Vector3 const &vec) {
+	Vector3 _vec;
+	_vec.x=(elements[0]*vec.x + elements[3]*vec.y + elements[6]*vec.z);
+	_vec.y=(elements[1]*vec.x + elements[4]*vec.y + elements[7]*vec.z);
+	_vec.z=(elements[2]*vec.x + elements[5]*vec.y + elements[8]*vec.z);
+	return _vec;
 }
 
 /**************************************/

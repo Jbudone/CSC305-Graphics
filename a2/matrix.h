@@ -54,6 +54,7 @@ public:
 	Matrix3x3 operator- (Matrix3x3 const&);
 	Matrix3x3 operator* (Matrix3x3 const&);
 	Matrix3x3 operator* (float);
+	Vector3 operator* (Vector3 const&);
 	Matrix3x3& operator+= (Matrix3x3 const&);
 	Matrix3x3& operator-= (Matrix3x3 const&);
 	Matrix3x3& operator*= (Matrix3x3 const&);

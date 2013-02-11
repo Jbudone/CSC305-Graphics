@@ -51,22 +51,53 @@ void BasicOpenGLView::initializeGL()
 
 	// projection settings
 	fov=90.0f;
-	frustum_right=frustum_top=4.0f;
-	frustum_left=frustum_bottom=-frustum_right;
-	plane_near=0.1f; // NOTE: must be >0
-	plane_far=-4.0f;
 	aspect=((float)width())/((float)height());
+	plane_near_pers=0.1f;
+	plane_far_pers=-4.0f;
+	frustum_right=frustum_top=1.5f;
+	frustum_left=frustum_bottom=-frustum_right;
+	plane_near=2.0f; // NOTE: must be >0
+	plane_far=-100.0f;
+	
+	// initial camera settings
+	eye0_arc = Vector3(0.0f, 0.0f, 2.0f);
+	at0_arc  = Vector3(0.0f, 0.0f, 0.0f);
+	up0_arc  = Vector3(0.0f, 1.0f, 0.0f);
 
-	mMoveScale=0.025; // used for worldcrawler mode
+	eye0_fps = Vector3(0.0f, 0.0f, 0.0f);
+	at0_fps  = Vector3(0.0f, 0.0f, -1.0f);
+	up0_fps  = Vector3(0.0f, 1.0f, 0.0f);
+
+	mMoveScale=0.25; // used for worldcrawler mode
 	setFocusPolicy(Qt::StrongFocus); // this allows keypresses to be propagated to this widget
 
 
 	// Set initial projection
+	update_perspective();
+	reset_camera();
+	mViewMatrix.createView(eye,at,up);
+	loadGeometry("3D_objects/cube.obj");
+}
+
+void BasicOpenGLView::update_perspective() {
 	if (mPerspectiveMode) {
-		mProjectionMatrix.projectPerspective(fov,aspect,plane_near,plane_far);
+		mProjectionMatrix.projectPerspective(fov,aspect,plane_near_pers,plane_far_pers);
 	} else {
 		mProjectionMatrix.projectOrthographic(frustum_left,frustum_right,frustum_top,frustum_bottom,plane_near,plane_far);
 	}
+}
+
+void BasicOpenGLView::reset_camera() {
+	if (mWorldCrawlerMode) {
+		eye=eye0_fps;
+		at=at0_fps;
+		up=up0_fps;
+	} else {
+		eye=eye0_arc;
+		at=at0_arc;
+		up=up0_arc;
+	}
+	mViewMatrix.createView(eye,at,up);
 }
 
 void BasicOpenGLView::resizeGL(int width, int height)
@@ -82,12 +113,8 @@ void BasicOpenGLView::resizeGL(int width, int height)
      *  Hint: for the swap between projection methods to work properly you will also
      *  need to add a function that responds to the switch in the UI
      */
-	if (mPerspectiveMode) {
-		aspect=((float)width)/((float)height);
-		mProjectionMatrix.projectPerspective(fov,aspect,plane_near,plane_far);
-	} else {
-		mProjectionMatrix.projectOrthographic(frustum_left,frustum_right,frustum_top,frustum_bottom,plane_near,plane_far);
-	}
+	aspect=((float)width)/((float)height);
+	update_perspective();
 }
 
 void BasicOpenGLView::mousePressEvent(QMouseEvent *event)
@@ -141,24 +168,55 @@ void BasicOpenGLView::mouseMoveEvent(QMouseEvent *event)
      */
 	
 	Matrix4x4 rotX, rotY;
-	rotY.rotateY(difference.x);
-	rotX.rotateX(difference.y);
+	float rotScale=fov*3.14f/180.0f; // our rotation diff should be within our fov range (in radians)
+	rotY.rotateY(difference.x*rotScale);
+	rotX.rotateX(-difference.y*rotScale);
 	if (mWorldCrawlerMode) {
 		// World Crawler
-		mViewMatrix *= rotX;
-		mViewMatrix *= rotY;
+
+		// rotate gaze vector by Y
+		Vector3 gaze = (at-eye);
+		gaze=((Matrix3x3)rotY)*gaze;
+		// gaze=((Matrix3x3)(rotY*rotX))*gaze;
+		at=eye+gaze;
+
+		// BUG: rotation along the X axis completely broken
+		// get new up from gaze rotated 90deg
+		// Matrix3x3 rotUp;
+		// rotUp=rotUp.rotateX(1.57);
+		// gaze=(at-eye);
+		// gaze.normalize();
+		// up=rotUp*gaze;
+
+		mViewMatrix.createView(eye,at,up);
 	} else {
 		// Arc-Ball
-		// Translate to origin, rotate, translate back
 
-		Matrix4x4 mViewMatrix_cpy, mViewMatrix_inv;
-		mViewMatrix_cpy=mViewMatrix_inv=mViewMatrix;
-		mViewMatrix_inv.invert();
+			// rotate the gaze vector, and apply it to our eye position
+			Vector3 gaze, gaze_new, gaze_diff;
+			gaze=(at-eye);
+			gaze_new=((Matrix3x3)rotX)*gaze;
+			// gaze_new=((Matrix3x3)(rotY*rotX))*gaze;
+			gaze_diff=gaze_new-gaze;
+			eye-=gaze_diff;
 
-		mViewMatrix *= mViewMatrix_inv;
-		mViewMatrix *= rotX;
-		mViewMatrix *= rotY;
-		mViewMatrix *= mViewMatrix_cpy;
+			// rotate our new gaze vector by 90deg (so it is perpendicular to our gaze), and apply to our up vec
+			// note: we rotate by our current rotation (rotY*rotX) so that we're working within the same space
+			Matrix3x3 rotUp;
+			// rotUp=((Matrix3x3)(rotY*rotX)).rotateX(1.57);
+			rotUp=((Matrix3x3)(rotX)).rotateX(1.57);
+			gaze=(at-eye);
+			gaze.normalize();
+			up=rotUp*gaze;
+
+			// BUG: attempts to include rotX AND rotY together fail
+			// gaze=(at-eye);
+			// gaze_new=((Matrix3x3)rotY)*gaze;
+			// gaze_diff=gaze-gaze_new;
+			// printf("gaze_diff (x): "); gaze_diff.print();
+			// eye-=gaze_diff;
+
+		mViewMatrix.createView(eye,at,up);
 	}
 	mLastMousePos = curPoint;
 }
@@ -168,13 +226,22 @@ void BasicOpenGLView::wheelEvent(QWheelEvent *event) {
 		float d=event->delta();
 		d/=1200;
 
-		Matrix4x4 mViewMatrix_cpy, mViewMatrix_inv;
-		mViewMatrix_cpy=mViewMatrix_inv=mViewMatrix;
-		mViewMatrix_inv.invert();
+		Vector3 forward, left; // what is our current forward/left vectors (relative to where we're facing)
+		forward=(at-eye);
+		forward.normalize();
+		left=(at-eye);
+		left=left.cross(up);
+		left.normalize();
 
-		mViewMatrix *= mViewMatrix_inv;
-		mViewMatrix[14]+=d;
-		mViewMatrix *= mViewMatrix_cpy;
+		eye+=(forward*mMoveVector.z);
+		eye-=(left*mMoveVector.x);
+		at+=(forward*mMoveVector.z);
+		at-=(left*mMoveVector.x);
+		mViewMatrix.createView(eye,at,up);
+
+
+		eye.z+=d;
+		mViewMatrix.createView(eye,at,up);
 	}
 }
 
@@ -234,8 +301,18 @@ void BasicOpenGLView::keyReleaseEvent(QKeyEvent *event)
 
 void BasicOpenGLView::update_timer() {
 	if (mWorldCrawlerMode) {
-		mViewMatrix[12]+=mMoveVector.x;
-		mViewMatrix[14]+=mMoveVector.z;
+		Vector3 forward, left; // what is our current forward/left vectors (relative to where we're facing)
+		forward=(at-eye);
+		forward.normalize();
+		left=(at-eye);
+		left=left.cross(up);
+		left.normalize();
+
+		eye+=(forward*mMoveVector.z);
+		eye-=(left*mMoveVector.x);
+		at+=(forward*mMoveVector.z);
+		at-=(left*mMoveVector.x);
+		mViewMatrix.createView(eye,at,up);
 	}
 }
 
@@ -386,18 +463,12 @@ void BasicOpenGLView::rotateGeometries_z(int z)
 }
 
 void BasicOpenGLView::option_worldCrawler(bool checked) {
-	if(!(mWorldCrawlerMode=checked)) {
-		mMoveVector.x=0;
-		mMoveVector.z=0;
-	}
+	mWorldCrawlerMode=checked;
+	reset_camera();
 }
 void BasicOpenGLView::option_perspective(bool checked) {
 	mPerspectiveMode=checked;
-	if (mPerspectiveMode) {
-		mProjectionMatrix.projectPerspective(fov,aspect,plane_near,plane_far);
-	} else {
-		mProjectionMatrix.projectOrthographic(frustum_left,frustum_right,frustum_top,frustum_bottom,plane_near,plane_far);
-	}
+	update_perspective();
 }
 void BasicOpenGLView::option_postMultiply(bool checked) {
 	mUsePostMultiply=checked;
