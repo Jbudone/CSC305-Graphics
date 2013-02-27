@@ -3,6 +3,7 @@
 
 #include <vector>
 #include "vector.h"
+#include <string>
 
 /**
  *  @todo assignment two
