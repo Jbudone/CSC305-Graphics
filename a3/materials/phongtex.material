@@ -1,0 +1,4 @@
+vertex phongtex.vs
+fragment phongtex.fs
+texture colormap.png
+bumpmap displacement.png

@@ -1,0 +1,5 @@
+vertex phongalpha.vs
+fragment phongalpha.fs
+texture colormap.png
+bumpmap displacement.png
+alphatex alphatexture.png

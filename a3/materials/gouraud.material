@@ -1,0 +1,3 @@
+vertex gouraud.vs
+fragment gouraud.fs
+

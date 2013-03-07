@@ -35,6 +35,7 @@ void Geometry::draw(Matrix4x4 & m_ProjectionMatrix,
                     Vector4 & m_LightCol,
                     uint32_t m_TextureHandle,
                     uint32_t m_BumpTextureHandle,
+                    uint32_t m_AlphaTextureHandle,
                     Program * m_Program/* = NULL*/)
 {
     // in case no shader is provided we use the default one created in the constructor
@@ -55,6 +56,7 @@ void Geometry::draw(Matrix4x4 & m_ProjectionMatrix,
     Parameter * lightColParam = m_Program->getParameter("lightCol");
     Parameter * colorMapParam = m_Program->getParameter("colormap");
     Parameter * bumpMapParam = m_Program->getParameter("bumpmap");
+    Parameter * alphaTexParam = m_Program->getParameter("alphatex");
 	
     // setting the uniform parameters
     if(projectionParam)
@@ -124,9 +126,19 @@ void Geometry::draw(Matrix4x4 & m_ProjectionMatrix,
     if(bumpMapParam)
     {
         glActiveTexture(GL_TEXTURE0 + activeTexture);
-        glBindTexture(GL_TEXTURE_2D, m_TextureHandle);
+        glBindTexture(GL_TEXTURE_2D, m_BumpTextureHandle); // JB: changed from m_TextureHandle
 
-        glUniform1i(colorMapParam->getHandle(),
+        glUniform1i(bumpMapParam->getHandle(), // JB: changed from colorMapParam
+                    activeTexture);
+
+        activeTexture++;
+    }
+    if(alphaTexParam)
+    {
+        glActiveTexture(GL_TEXTURE0 + activeTexture);
+        glBindTexture(GL_TEXTURE_2D, m_AlphaTextureHandle);
+
+        glUniform1i(alphaTexParam->getHandle(),
                     activeTexture);
 
         activeTexture++;
@@ -223,14 +235,21 @@ void Geometry::draw(Matrix4x4 & m_ProjectionMatrix,
 
     glBindVertexArray(0);
 
-    if(colorMapParam)
+    if(alphaTexParam)
     {
         --activeTexture;
         glActiveTexture(GL_TEXTURE0 + activeTexture);
         glBindTexture(GL_TEXTURE_2D, 0);
     }
 
-    if(bumpMapParam)
+    if(bumpMapParam) // JB: swapped places w/ colorMapParam and bumpMapParam so this one comes first
+    {
+        --activeTexture;
+        glActiveTexture(GL_TEXTURE0 + activeTexture);
+        glBindTexture(GL_TEXTURE_2D, 0);
+    }
+
+    if(colorMapParam)
     {
         --activeTexture;
         glActiveTexture(GL_TEXTURE0 + activeTexture);

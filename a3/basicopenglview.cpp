@@ -49,6 +49,7 @@ void BasicOpenGLView::loadMaterial(std::string m_Material)
     const std::string fragment("fragment");
     const std::string texture("texture");
     const std::string bump("bumpmap");
+    const std::string alphatex("alphatex");
 
     mProgram = new Program();
 
@@ -92,16 +93,65 @@ void BasicOpenGLView::loadMaterial(std::string m_Material)
              * use the texturePath to load an image from disc, and transfer its data to
              * OpenGL and store the OpenGL image handle in mTextureHandle
              */
+			QImage tex;
+			if (tex.load(texturePath.c_str())) {
+				QImage ogTex = QGLWidget::convertToGLFormat(tex);
+
+				// copy the texture to opengl
+				glGenTextures(1, &mTextureHandle);
+				glActiveTexture(GL_TEXTURE0);
+				glBindTexture(GL_TEXTURE_2D, mTextureHandle);
+				glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, ogTex.width(), ogTex.height(), 0, GL_RGBA, GL_UNSIGNED_BYTE, tex.bits());
+				glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+				glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+			} else {
+				printf("Error finding texture\n");
+			}
         }
         else if(line.compare(0, bump.size(), bump) == 0)
         {
-            std::string texturePath = filePath + line.substr(texture.size() + 1);
+            std::string texturePath = filePath + line.substr(bump.size() + 1);
 
             /**
              * @todo assignment 3
              * use the texturePath to load an image from disc, and transfer its data to
              * OpenGL and store the OpenGL image handle in mBumpTextureHandle
              */
+			QImage tex;
+			if (tex.load(texturePath.c_str())) {
+				QImage ogTex = QGLWidget::convertToGLFormat(tex);
+
+				// copy the bumpmap to opengl
+				glGenTextures(1, &mBumpTextureHandle);
+				glBindTexture(GL_TEXTURE_2D, mBumpTextureHandle);
+				glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, ogTex.width(), ogTex.height(), 0, GL_RGBA, GL_UNSIGNED_BYTE, tex.bits());
+				glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+				glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+			} else {
+				printf("Error finding bumpmap\n");
+			}
+        }
+        else if(line.compare(0, alphatex.size(), alphatex) == 0)
+        {
+            std::string texturePath = filePath + line.substr(alphatex.size() + 1);
+
+            /**
+			 * JB: add in alpha texture
+             */
+			QImage tex;
+			if (tex.load(texturePath.c_str())) {
+				QImage ogTex = QGLWidget::convertToGLFormat(tex);
+
+				// copy the bumpmap to opengl
+				glGenTextures(1, &mAlphaTextureHandle);
+				glBindTexture(GL_TEXTURE_2D, mAlphaTextureHandle);
+				glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, ogTex.width(), ogTex.height(), 0, GL_RGBA, GL_UNSIGNED_BYTE, tex.bits());
+				glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+				glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+			} else {
+				printf("Error finding alpha texture\n");
+				printf(texturePath.c_str());
+			}
         }
         else
         {
@@ -166,6 +216,11 @@ void BasicOpenGLView::initializeGL()
      *  @todo assignment two
      *  initialize the mViewMatrix and mProjectionMatrix with starting values here
      */
+
+	// JB NOTE
+	// autoload model & material for quick access
+	loadGeometry("3D_objects/cube.obj");
+	loadMaterial("materials/phongalpha.material");
 }
 
 void BasicOpenGLView::resizeGL(int width, int height)

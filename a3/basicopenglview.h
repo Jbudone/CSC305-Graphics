@@ -226,6 +226,7 @@ private:
 
     GLuint  mTextureHandle;                 /**< the handle for a texture, if present. */
     GLuint  mBumpTextureHandle;             /**< the handle for the bump texture, if present. */
+    GLuint  mAlphaTextureHandle;             /**< the handle for the bump texture, if present. */
     Program * mProgram;                     /**< program to override the shaders used for rendering. */
     Vector3 mLightPos;                      /**< the position of the light source. */
     Vector4 mLightCol;                      /**< the color of the light source. */

@@ -69,6 +69,7 @@ public:
               Vector4 & m_LightCol,
               uint32_t m_TextureHandle,
               uint32_t m_BumpTextureHandle,
+			  uint32_t m_AlphaTextureHandle,
               Program * m_Program = NULL);
 
     /**

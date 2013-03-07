@@ -24,6 +24,7 @@ BasicOpenGLView::BasicOpenGLView(QWidget *parent) :
     mDistance(2.0f),
     mTextureHandle(0),
     mBumpTextureHandle(0),
+    mAlphaTextureHandle(0),
     mProgram(NULL),
     mAnimationTimer()
 {
@@ -41,6 +42,7 @@ void BasicOpenGLView::paintGL()
 
     float secondsElapsed = elapsed * 0.001f;
 
+	// JB: removed light position/colour change
     mLightPos.x = sin(secondsElapsed) * 20.0f;
     mLightPos.z = cos(secondsElapsed) * 20.0f;
     mLightPos.y = cos(secondsElapsed * 0.5f) * 20.0f;
@@ -77,6 +79,7 @@ void BasicOpenGLView::paintGL()
                          mLightCol,
                          mTextureHandle,
                          mBumpTextureHandle,
+                         mAlphaTextureHandle,
                          mProgram);
         ++it;
     }
