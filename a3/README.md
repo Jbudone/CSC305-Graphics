@@ -7,14 +7,22 @@ space. This includes Ambience, Diffuse and Specular (ADS) illumination;
 texture and bump mapping; and gouraud vs. phong models.
 
 
-TODO
-======
+Marking
+========
 
- * readme
- * extra shader (moss?)
- * clean .cpp (remove automatic cube/shader loading)
- * screenshots
- * compile in lab
+1 pt for code comments & README.txt file
+1 pt for loading textures and uploading them to OpenGL
+2 pt for Gouraud shading of vertex colours
+2 pt for Phong shading of vertex colours
+2 pt for Phong shading with textures
+2 pt for Bump mapping
+2* pt for additional surface shading technique (Alpha texture)
+
+Running
+========
+
+./build/Release/BasicOpenGL.app/Contents/MacOS/BasicOpenGL
+
 
 Gouraud
 ========
@@ -50,7 +58,10 @@ of the tangent and binormal vectors gives us a new normal vector for the
 given pixel, which is used in all the lighting calculations. This new normal
 makes the mesh appear bumpy, due to the angled lighting calculations.
 
-Double-Tex
+Alpha Texture
 ========
 
-TODO
+For an additional shading technique, I've implemented an alpha texture
+which takes a second texture and mixes it with the base texture based off
+of the alpha texture's alpha value. This gives a great effect for things 
+like vines or moss growing ontop of the brick wall.
