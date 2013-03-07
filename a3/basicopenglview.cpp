@@ -217,10 +217,6 @@ void BasicOpenGLView::initializeGL()
      *  initialize the mViewMatrix and mProjectionMatrix with starting values here
      */
 
-	// JB NOTE
-	// autoload model & material for quick access
-	loadGeometry("3D_objects/cube.obj");
-	loadMaterial("materials/phongalpha.material");
 }
 
 void BasicOpenGLView::resizeGL(int width, int height)

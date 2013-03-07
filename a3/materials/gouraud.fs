@@ -1,13 +1,12 @@
-
 #version 150
 
 out vec4 fColor;
 
-varying vec4 vColor;
-varying vec4 vDiffuse;
-varying vec4 vSpec;
-varying float specI;
-varying float diffI;
+in vec4 vColor;
+in vec4 vDiffuse;
+in vec4 vSpec;
+in float specI;
+in float diffI;
 
 void main()
 {

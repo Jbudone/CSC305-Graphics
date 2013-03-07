@@ -14,9 +14,9 @@ in vec3 vertex;
 in vec4 color;
 in vec3 normal;
 
-varying vec3 fvVertex;
-varying vec4 fvColor;
-varying vec3 fvNormal;
+out vec3 fvVertex;
+out vec4 fvColor;
+out vec3 fvNormal;
 
 
 void main()

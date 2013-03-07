@@ -12,10 +12,10 @@ uniform mat3 normalMatrix;
 uniform vec3 lightPos;
 uniform vec4 lightCol;
 
-varying vec3 fvVertex;
-varying vec4 fvColor;
-varying vec3 fvNormal;
-varying vec2 fvtexcoord0;
+in vec3 fvVertex;
+in vec4 fvColor;
+in vec3 fvNormal;
+in vec2 fvtexcoord0;
 
 uniform sampler2D colormap;
 uniform sampler2D bumpmap;
@@ -30,7 +30,7 @@ void main()
 {
 
 	// main texture
-	vec4 texcolor = texture2D(colormap, fvtexcoord0.st);
+	vec4 texcolor = texture(colormap, fvtexcoord0.st);
 
 
 
@@ -57,10 +57,10 @@ void main()
 	float x = fvtexcoord0.s;
 	float y = fvtexcoord0.t;
 	float dt = 1.0/1024.0;
-	float N = texture2D(bumpmap, vec2(x, y + dt)).r;
-	float S = texture2D(bumpmap, vec2(x, y - dt)).r;
-	float E = texture2D(bumpmap, vec2(x + dt, y)).r;
-	float W = texture2D(bumpmap, vec2(x - dt, y)).r;
+	float N = texture(bumpmap, vec2(x, y + dt)).r;
+	float S = texture(bumpmap, vec2(x, y - dt)).r;
+	float E = texture(bumpmap, vec2(x + dt, y)).r;
+	float W = texture(bumpmap, vec2(x - dt, y)).r;
 	float C = 6.0;
 
 	vec3 tangent = vec3(C * dt, 0, E - W);
@@ -78,7 +78,7 @@ void main()
 	// vertPos = - (viewModel * vertex); the vertex projected by the view*model
 
 	vec3 lightDir = normalize(vec3(vec4(viewMatrix * modelMatrix * (vec4(lightPos,1.0)-vec4(fvVertex,1.0)))));
-	vec3 vertPos = normalize(-vec4(viewMatrix * modelMatrix * vec4(fvVertex, 1.0)));
+	vec3 vertPos = normalize(vec3(-vec4(viewMatrix * modelMatrix * vec4(fvVertex, 1.0))));
 	float lDotN = max(dot(lightDir,norm), 0.0);
 
 

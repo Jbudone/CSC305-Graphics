@@ -14,11 +14,11 @@ in vec3 vertex;
 in vec4 color;
 in vec3 normal;
 
-varying vec4 vColor;
-varying vec4 vDiffuse;
-varying vec4 vSpec;
-varying float specI;
-varying float diffI;
+out vec4 vColor;
+out vec4 vDiffuse;
+out vec4 vSpec;
+out float specI;
+out float diffI;
 
 const vec4  specularVec = vec4(1.0);
 const float ambienceIntensity = 0.45;
@@ -26,6 +26,7 @@ const float shininess = 6.0;
 
 void main()
 {
+
 	// (prof) vertex pos
 	vec4 position = modelMatrix * vec4(vertex, 1.0);
 	gl_Position = projectionMatrix * viewMatrix * position;
@@ -42,9 +43,8 @@ void main()
 
 	vec3 norm = normalize(normalMatrix * normal);
 	vec3 lightDir = normalize(vec3(vec4(viewMatrix * modelMatrix * (vec4(lightPos,1.0)-vec4(vertex,1.0))))); // light direction
-	vec3 vertPos = normalize(-vec4(viewMatrix * modelMatrix * vec4(vertex, 1.0))); // vertex position
+	vec3 vertPos = normalize(vec3(-vec4(viewMatrix * modelMatrix * vec4(vertex, 1.0)))); // vertex position
 	float lDotN = max(dot(lightDir,norm), 0.0);
-
 
 
 	// ADS Shading (Ambience, Diffuse, Specular)

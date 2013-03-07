@@ -15,10 +15,10 @@ in vec4 color;
 in vec3 normal;
 in vec2 texcoord0;
 
-varying vec3 fvVertex;
-varying vec4 fvColor;
-varying vec3 fvNormal;
-varying vec2 fvtexcoord0;
+out vec3 fvVertex;
+out vec4 fvColor;
+out vec3 fvNormal;
+out vec2 fvtexcoord0;
 
 void main()
 {
