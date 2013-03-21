@@ -19,3 +19,7 @@ a2.zip
 a3.zip
 
 README.txt
+
+*.xcodeproj
+Info.plist
+build/
