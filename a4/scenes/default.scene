@@ -7,12 +7,13 @@
 # light  [x-pos] [y-pos] [z-pos] [r-col] [g-col] [b-col] [radius] [intensity]
 # sphere [x-pos] [y-pos] [z-pos] [r-col] [g-col] [b-col] [radius] [material]
 
-scene 1024 768 40 1 0.4 0.7
 
-light 0 20 -30 3 3 3 4 3 # white light 0.8*
-light 0 20 0 2 1 1 3 1
-light 0 5 30 2 1 1 3 3
-floor 0 -4 0 0.3 0.1 0.3 T  # -5y, white
+scene 1024 768 40 1 1 1
+
+light 0 20 -30 1 1 1 2 2.5
+light 0 20 0 2 1 1 0.1 0.5
+light 0 5 30 2 1 1 0.1 1.5
+floor 0 -4 0 0.9 0.9 0.9 R
 
 sphere 0 -0.2 -20 0.4 0.9 0.4 4 T # Green one
 sphere 4 -2 -12 1 0.4 0.4 2 R # front-right one

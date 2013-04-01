@@ -7,12 +7,30 @@ name: Joshua Braendel
 student id: V00482121
 Mar 25. 2013
 
+Raytrace Contest: use screenshot2.png
+
 
 A simple raytracer which calculates reflections, refractions (transparency), diffuse, and shadows.
 The idea is that a ray is cast out of every pixel into the world, intersected with an object, and
 further raycasted through reflections and refractions; then returned as a colour for the given 
 pixel, and printed into an .ppm image
 
+
+Marking Criteria
+======
+
+✓ 1 pt for code comments & README.txt file
+✓ 1 pt for writing an image to disc
+✓ 1 pt for generating the rays through each pixel and intersecting with a plane as floor
+✓ 1 pt for intersecting rays with a sphere
+✓ 1 pt for calculating the diffuse and specular color
+✓ 1 pt for calculating if a surface point is in the shadow or not
+✓ 1 pt for calculating reflections with arbitrary recursion depth
+✓ 1 pt for shooting an arbitrary number of rays per pixel
+✓ 2 pt for combining Phong illumination with shadowing and reflections
+
+# Bonus
+✓ 2 pt for adding refractions
 
 Running
 ======
@@ -120,6 +138,5 @@ Intersections
 TODO
 ======
 
- * name/sid + extras in readme
- * compile under Mac
+ * soft shadows w/ multiple lights
 
