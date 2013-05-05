@@ -24,3 +24,11 @@ Assignment 3
 Assignment 3 implements basic shader techniques in illuminating objects in 
 space. This includes Ambience, Diffuse and Specular (ADS) illumination; 
 texture and bump mapping; and gouraud vs. phong models.
+
+Assignment 4
+--------------
+
+Assignment 4 is a simple ray-tracer with collision detection for spheres and
+axis-aligned planes. The ray-tracer allows for reflection and refraction, 
+with a variable number of rays that can be cast. The program includes a simple
+scene parser for building and selecting your own scenes.
